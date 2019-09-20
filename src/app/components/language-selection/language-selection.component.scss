@@ -1,0 +1,23 @@
+.language-selection-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  
+    .material-radio-group {
+      display: flex;
+      flex-direction: row;
+      margin: 15px 0;
+      justify-content: space-evenly;
+  
+      .material-radio-button {
+        margin: 5px;
+      }
+    }
+
+    .action-buttons {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+      }
+  }

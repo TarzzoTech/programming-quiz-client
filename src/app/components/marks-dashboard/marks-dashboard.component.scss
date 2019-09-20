@@ -1,0 +1,12 @@
+@import '../../../mixins';
+
+table {
+  width: 100%;
+}
+
+.marks-table-container {
+  position: relative;
+  max-height: 400px;
+  overflow: auto;
+  @include custom-scroll();
+}

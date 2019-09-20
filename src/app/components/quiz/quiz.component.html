@@ -1,0 +1,28 @@
+<mat-drawer-container class="drawer-container">
+    <mat-drawer class="questions-drawer" #drawer [mode]="'side'">
+        <ng-container *ngFor="let qNumber of questionNumberList">
+            <button type="button" class="btn mt-3 ml-4"
+                [ngClass]="{'btn-outline-secondary': qNumber !== currentQuestion,'btn-outline-primary': qNumber === currentQuestion}"
+                (click)="onQSelect(qNumber)">
+                {{qNumber}}
+            </button>
+        </ng-container>
+    </mat-drawer>
+    <mat-drawer-content>
+        <ng-container *ngIf="viewMode === QuesViewMode.INSTRUCTIONS">
+            <app-instructions></app-instructions>
+            <button mat-raised-button color="primary" (click)="drawer.toggle(); startQuiz()">Start your Quiz</button>
+        </ng-container>
+        <ng-container *ngIf="viewMode === QuesViewMode.QUESTIONS">
+            <app-questions (onSelect)="onSelect($event)"></app-questions>
+            <div class="action-buttons">
+                <button mat-raised-button color="primary" *ngIf="!showSubmitBtn" (click)="nextQuestion()">Next</button>
+                <button mat-raised-button color="primary" *ngIf="showSubmitBtn"
+                    (click)="drawer.toggle(); submitQuiz()">Submit</button>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="viewMode === QuesViewMode.END">
+            <app-end [scorecard]="scorecard"></app-end>
+        </ng-container>
+    </mat-drawer-content>
+</mat-drawer-container>

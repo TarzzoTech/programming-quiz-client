@@ -1,0 +1,14 @@
+<div class="question-container p-5">
+    <h3 class="question">{{ questionNumber }}. {{ question?.Title }}</h3>
+    <p class="question-description">
+        {{
+            question?.Description
+        }}
+    </p>
+    <mat-radio-group aria-labelledby="example-radio-group-label" class="material-radio-group"
+        [ngModel]="selectedOption" (ngModelChange)="onChange($event)">
+        <mat-radio-button [value]="question?.Options[optionKey]" *ngFor="let optionKey of questionOptions" class="material-radio-button">
+            {{question?.Options[optionKey]}}
+        </mat-radio-button>
+    </mat-radio-group>
+</div>

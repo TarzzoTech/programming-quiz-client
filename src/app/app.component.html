@@ -1,0 +1,22 @@
+<header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+    <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <img src="assets/images/icon.png" width="100px" alt="PQ">
+            <span class="mdc-top-app-bar__title">
+                <a class="title-link" (click)="reset()" routerLink="/">Programming Quiz</a>
+            </span>
+        </section>
+        <section *ngIf="mode===role.ADMIN" class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+            <button (click)="addQuestions()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded" aria-label="add-questions"
+                matTooltip="Add questions">note_add</button>
+            <!-- <button (click)="goToTrash()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded" aria-label="trash"
+                matTooltip="trash">delete_sweep</button> -->
+        </section>
+        <section *ngIf="mode===role.USER" class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end user_section">
+            <span>Welcome <b><i>{{name}}</i></b></span>
+        </section>
+    </div>
+</header>
+<main class="mdc-top-app-bar--fixed-adjust">
+    <router-outlet></router-outlet>
+</main>

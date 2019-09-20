@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "./mixins";
+
+html {
+  height: 100%;
+  body {
+    margin: 0;
+    height: 100%;
+
+    .mdc-top-app-bar {
+      // background-color: #00ff00;
+      // background-color: #bed63a;
+      .mdc-top-app-bar__title {
+        padding-left: 0;
+      }
+    }
+
+    main {
+      height: 100%;
+
+      .mat-radio-button {
+        .mat-radio-outer-circle {
+          border-color: rgba(119, 16, 16, 0.54);
+        }
+
+        &.mat-radio-checked {
+          .mat-radio-outer-circle {
+            border-color: #69f0ae;
+          }
+        }
+      }
+
+      .action-buttons {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+      }
+    }
+
+    .mat-autocomplete-panel {
+      @include custom-scroll();
+    }
+
+    .cursor-pointer {
+      cursor: pointer !important;
+    }
+  }
+}

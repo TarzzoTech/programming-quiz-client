@@ -30,6 +30,18 @@ export class QuestionsListComponent implements OnInit {
 
   init() {
     this.languagesList = this.data.getLanguagesCollection();
+    if (this.languagesList && this.languagesList.length === 0) {
+      this.api.getLanguagesCollection().then((languagesCollection: LanguageStructure[]) => {
+        this.data.setLanguagesCollection(languagesCollection);
+        this.languagesList = languagesCollection;
+        this.getQuestion();
+      }).catch(error => console.log(error));
+    } else {
+      this.getQuestion();
+    }
+  }
+
+  getQuestion() {
     this.api.getAllQuestions().then((questionsList: Question[]) => {
       if (questionsList && questionsList.length > 0) {
         this.allQuestions = questionsList;
@@ -49,6 +61,6 @@ export class QuestionsListComponent implements OnInit {
 
   onEditQuestion(questionId: string) {
     this.data.onEditQuestion.next(questionId);
-    this.router.navigate(['/data-entry/Edit']);
+    this.router.navigate(['/data-entry']);
   }
 }

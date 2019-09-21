@@ -35,10 +35,6 @@ const routes: Routes = [
         component: FormEntryComponent
       },
       {
-        path: 'Edit',
-        component: FormEntryComponent
-      },
-      {
         path: 'file',
         component: FileEntryComponent
       }

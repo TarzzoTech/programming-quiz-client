@@ -1,8 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { Role } from './models';
+import { Role, LanguageStructure } from './models';
+import { ApiService } from './services/api.service';
+import { DataService } from './services/data.service';
+import { browser } from 'protractor';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +23,10 @@ export class AppComponent  implements OnInit, OnDestroy {
   constructor(
     private auth: AuthService,
     private router: Router,
-  ) {}
+    private api: ApiService,
+    private data: DataService
+  ) {
+  }
 
   ngOnInit() {
     this.roleSyncSubscription = this.auth.roleSync.subscribe((role: Role) => {
@@ -32,7 +38,10 @@ export class AppComponent  implements OnInit, OnDestroy {
   }
 
   addQuestions() {
-    this.router.navigate(['/data-entry']);
+    this.api.getLanguagesCollection().then((languagesCollection: LanguageStructure[]) => {
+      this.data.setLanguagesCollection(languagesCollection);
+      this.router.navigate(['/data-entry']);
+    }).catch(error => console.log(error));
   }
 
   goToTrash() {

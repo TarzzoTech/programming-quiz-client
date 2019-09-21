@@ -1,5 +1,5 @@
 export interface Question {
-  Id: string;
+  _id?: string;
   LanguageId: string;
   Title: string;
   Description: string;

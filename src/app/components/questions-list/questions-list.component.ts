@@ -26,7 +26,6 @@ export class QuestionsListComponent implements OnInit {
 
   ngOnInit() {
     this.init();
-    console.log(this.languagesQuestions);
   }
 
   init() {
@@ -40,13 +39,12 @@ export class QuestionsListComponent implements OnInit {
         );
         this.onLanguageSelect(this.languagesQuestions[0]);
       }
-    });
+    }).catch(error => console.log(error));
   }
 
   onLanguageSelect(language: Language) {
     this.selectedLanguage = language.Id;
     this.selectedLanguageQuestions = language.Questions;
-    console.log(language);
   }
 
   onEditQuestion(questionId: string) {

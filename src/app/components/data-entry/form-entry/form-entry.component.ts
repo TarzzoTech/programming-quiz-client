@@ -121,8 +121,11 @@ export class FormEntryComponent implements OnInit, OnDestroy {
     this.router.navigate(['/data-entry/file']);
   }
 
+  goQuestionsList() {
+    this.router.navigate(['/questions-list']);
+  }
+
   onSubmit = () => {
-    console.log(this.questionEntryForm.value);
     const questionBuilder = new QuestionBuilder(this.questionEntryForm.value);
     questionBuilder.then(question => {
       if (this.editId) {

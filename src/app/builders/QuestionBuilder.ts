@@ -1,9 +1,7 @@
 import { Question, QuestionsEntry } from '../models';
-import { generateId } from '../Utility';
 
 export class QuestionBuilder {
   question: Question = {
-    Id: '',
     Title: '',
     Description: '',
     Options: {
@@ -19,7 +17,6 @@ export class QuestionBuilder {
     IsActive: true
   };
   constructor(questionsEntry: QuestionsEntry) {
-    this.question.Id = generateId();
     this.question.LanguageId = questionsEntry.LanguageId;
     this.question.Title = questionsEntry.Title;
     this.question.Answer = questionsEntry.Answer;

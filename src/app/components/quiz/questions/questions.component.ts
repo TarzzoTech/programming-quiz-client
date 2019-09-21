@@ -27,15 +27,21 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     this.questionSelectSubscription = this.quiz.onQuestionSelect.subscribe((qNum) => {
       this.questionNumber = qNum + 1;
       this.question = this.quiz.getQuestion(qNum);
-      this.questionOptions = Object.keys(this.question.Options);
+      this.questionOptions = [];
+      Object.keys(this.question.Options).forEach(qKey => {
+        if (this.question.Options[qKey] && qKey !== '_id') {
+          this.questionOptions.push(qKey);
+        }
+      });
       this.selectedOption = this.question.SelectedAnswers;
     });
   }
 
   onChange($event): void {
     this.selectedOption = $event;
+    const Id = this.question._id;
     this.onSelect.emit({
-      Id: this.question.Id,
+      Id,
       Answer: $event
     });
   }

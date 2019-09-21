@@ -1,7 +1,7 @@
 import { Dashboard } from './Dashboard';
 
 // new Date().toDateString()
-export const DashboardData: Dashboard = {
+export const DashboardData = {
     'Sat Aug 31 2019': [
         {
             Id: '111',

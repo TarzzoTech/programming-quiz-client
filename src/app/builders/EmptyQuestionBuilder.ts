@@ -1,5 +1,4 @@
-import { Question, QuestionsEntry } from '../models';
-import { generateId } from '../Utility';
+import { Question } from '../models';
 
 export class EmptyQuestionBuilder {
   question: Question = {

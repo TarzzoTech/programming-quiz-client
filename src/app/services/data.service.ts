@@ -8,9 +8,9 @@ import { BehaviorSubject } from 'rxjs';
 export class DataService {
 
   // date wise score details storage
-  private DashboardData: Dashboard = DashboardData;
+  private DashboardData: Dashboard = {} as Dashboard;
   // list of languages storage
-  private LanguagesList: LanguageStructure[] = LanguagesList;
+  private LanguagesList: LanguageStructure[] = [];
   // file data entry list of language based questions storage
   private QuizData: DataEntry[] = [];
   // subscribe on question edit click

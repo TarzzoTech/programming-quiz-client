@@ -22,7 +22,7 @@ export class LanguageSelectionComponent implements OnInit {
     this.api.getAvailableLanguages().then((availableLanguages: LanguageStructure[]) => {
       this.availableLanguages = availableLanguages;
       this.quiz.setAvailableLanguages(availableLanguages);
-    });
+    }).catch(error => console.log(error));
   }
 
   ngOnInit() {
@@ -37,7 +37,7 @@ export class LanguageSelectionComponent implements OnInit {
     this.api.getQuestionsByLanguage(this.selectedLanguage).then((questionsList: Question[]) => {
       this.quiz.setQuestions(questionsList);
       this.router.navigate(['/quiz']);
-    });
+    }).catch(error => console.log(error));
   }
 
 }

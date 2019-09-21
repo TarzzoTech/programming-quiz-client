@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
-import { LanguageStructure } from 'src/app/models';
-import { ApiService } from 'src/app/services/api.service';
-
 
 @Component({
   selector: 'app-data-entry',
@@ -11,16 +7,9 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class DataEntryComponent implements OnInit {
 
-  constructor(
-    private data: DataService,
-    private api: ApiService
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-    // this.data.onEditQuestion.next('_snivh3mqzmg95drc8oq33n');
-    this.api.getLanguagesCollection().then((languagesCollection: LanguageStructure[]) => {
-      this.data.setLanguagesCollection(languagesCollection);
-    });
   }
 
 }

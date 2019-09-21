@@ -16,7 +16,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class QuizService {
-  private Questions: Question[] = Questions;
+  private Questions: Question[] = [];
   // Available Languages with questions
   private AvailableLanguages: LanguageStructure[] = [];
   private selectedLanguage: string;
@@ -77,7 +77,7 @@ export class QuizService {
 
   updateSelectedAnswers(answer: SelectedAnswers): void {
     this.Questions = this.Questions.map(sa => {
-      if (sa.Id === answer.Id) {
+      if (sa._id === answer.Id) {
         sa.SelectedAnswers = answer.Answer;
       }
       return sa;

@@ -39,11 +39,17 @@ export class LoginComponent implements OnInit {
 
   emailSubmit() {
     if (this.emailFormControl.status === 'VALID') {
-      if (this.api.validateEmail(this.emailFormControl.value)) {
-        this.viewMode = this.loginMode.PASSWORD;
-      } else {
-        this.viewMode = this.loginMode.NAME;
-      }
+      this.auth.setEmail(this.emailFormControl.value);
+      this.api.validateEmail(this.emailFormControl.value)
+        .then(userName => {
+          if (userName) {
+            this.auth.setName(userName);
+            this.viewMode = this.loginMode.PASSWORD;
+          } else {
+            this.viewMode = this.loginMode.NAME;
+          }
+        })
+        .catch(error => console.log(error));
     }
   }
 
@@ -57,14 +63,14 @@ export class LoginComponent implements OnInit {
 
   passwordSubmit() {
     if (this.passwordFormControl.status === 'VALID') {
-      this.api.validatePwd(this.passwordFormControl.value)
+      this.api.validatePwd(this.auth.getEmail(), this.passwordFormControl.value)
       .then((res) => {
         this.passwordFormControl.setErrors({ invalid: !res });
         if (res) {
           this.auth.setRole(Role.ADMIN);
           this.router.navigate(['/dashboard']);
         }
-      });
+      }).catch(error => console.log(error));
     }
   }
 }

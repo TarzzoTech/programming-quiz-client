@@ -2,24 +2,29 @@ import { Injectable } from '@angular/core';
 import * as bcrypt from 'bcryptjs';
 import { User, Question, LanguagesList, LanguageStructure, QuizEntryResponse } from '../models';
 import { getLanguagesList } from '../Utility';
+import { HttpClient } from '@angular/common/http';
+
+const API_URL = 'http://localhost:3000/';
 
 const storage = localStorage;
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  constructor() {}
+  constructor(
+    private http: HttpClient
+  ) {}
 
   // APIs related to authentication
 
   // to check the email is admin's email
-  validateEmail(email: string): boolean {
-    return email === User.EmailId;
+  validateEmail(Email: string): Promise<any> {
+    return this.http.post(`${API_URL}auth/validate-email`, { Email }).toPromise();
   }
 
   // validating the admin's password
-  validatePwd(pwd: string) {
-    return bcrypt.compare(pwd, User.PwdHash);
+  validatePwd(Email: string, Password: string): Promise<any> {
+    return this.http.post(`${API_URL}auth/validate-password`, { Email, Password }).toPromise();
   }
 
   // ------------------------------------------------------------------------------------------------------------------------
@@ -27,21 +32,8 @@ export class ApiService {
   // APIs related to Quiz
 
   // get all the user's quiz data
-  getQuizDataCollection() {
-    return new Promise((resolve, reject) => {
-      try {
-        const quizDataCollectionSting = storage.getItem('QuizDataCollection');
-        let quizDataCollection: QuizEntryResponse[] = [];
-        if (quizDataCollectionSting) {
-          quizDataCollection = JSON.parse(quizDataCollectionSting);
-        } else {
-          storage.setItem('QuizDataCollection', JSON.stringify(quizDataCollection));
-        }
-        resolve(quizDataCollection);
-      } catch (error) {
-        reject('Fetching Quiz Data Collection is failed!');
-      }
-    });
+  getQuizDataCollection(): Promise<any> {
+    return this.http.get(`${API_URL}quiz/all-entries`).toPromise();
   }
 
   // insert user's quiz data

@@ -31,20 +31,28 @@ export class AuthService {
     };
   }
 
+  getEmail(): string {
+    return this.email;
+  }
+
+  getName(): string {
+    return this.name;
+  }
+
   init() {
     const role = this.storage.getItem('role');
-    if (role) {
+    if (role && role !== 'undefined') {
       this.role = JSON.parse(role);
       this.roleSync.next(JSON.parse(role));
     }
     const name = this.storage.getItem('name');
-    if (name) {
+    if (name && name !== 'undefined') {
       this.name = name;
       this.nameSync.next(name);
     }
 
     const email = this.storage.getItem('email');
-    if (email) {
+    if (email && email !== 'undefined') {
       this.email = email;
     }
   }

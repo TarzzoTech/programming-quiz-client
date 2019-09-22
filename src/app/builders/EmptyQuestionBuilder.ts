@@ -2,7 +2,6 @@ import { Question } from '../models';
 
 export class EmptyQuestionBuilder {
   question: Question = {
-    Id: '',
     Title: '',
     Description: '',
     Options: {

@@ -34,6 +34,7 @@ import { LanguageSelectionComponent } from './components/language-selection/lang
 import { DataService } from './services/data.service';
 import { FileEntryComponent } from './components/data-entry/file-entry/file-entry.component';
 import { FormEntryComponent } from './components/data-entry/form-entry/form-entry.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { FormEntryComponent } from './components/data-entry/form-entry/form-entr
     AuthService,
     QuizService,
     ApiService,
-    DataService
+    DataService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

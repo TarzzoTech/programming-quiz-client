@@ -10,6 +10,7 @@ export class AuthService {
   private name: string;
   private email: string;
   private storage = localStorage;
+  private authenticated = false;
 
   roleSync: BehaviorSubject<Role> = new BehaviorSubject<Role>(null);
   nameSync: BehaviorSubject<string> = new BehaviorSubject<string>(null);
@@ -39,7 +40,7 @@ export class AuthService {
     return this.name;
   }
 
-  init() {
+  init(): void {
     const role = this.storage.getItem('role');
     if (role && role !== 'undefined') {
       this.role = JSON.parse(role);
@@ -68,6 +69,18 @@ export class AuthService {
     return this.role === Role.ADMIN;
   }
 
+  authenticate(): void {
+    this.authenticated = true;
+  }
+
+  isAuthenticated(): boolean {
+    return this.authenticated && this.role === Role.ADMIN;
+  }
+
+  private removeAuthenticate(): void {
+    this.authenticated = false;
+  }
+
   setName(name: string): void {
     this.storage.removeItem('name');
     this.storage.setItem('name', name);
@@ -75,13 +88,13 @@ export class AuthService {
     this.nameSync.next(name);
   }
 
-  resetAll() {
+  resetAll(): void {
     this.role = null;
     this.name = '';
     this.roleSync.next(this.role);
     this.nameSync.next(this.name);
     this.storage.setItem('name', undefined);
     this.storage.setItem('role', undefined);
-    // this.storage.clear();
+    this.removeAuthenticate();
   }
 }

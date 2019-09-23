@@ -118,11 +118,11 @@ export class FormEntryComponent implements OnInit, OnDestroy {
   }
 
   onInsertFile() {
-    this.router.navigate(['/data-entry/file']);
+    this.router.navigate(['/1/data-entry/file']);
   }
 
   goQuestionsList() {
-    this.router.navigate(['/questions-list']);
+    this.router.navigate(['/1/questions-list']);
   }
 
   onSubmit = () => {
@@ -131,7 +131,7 @@ export class FormEntryComponent implements OnInit, OnDestroy {
       if (this.editId) {
         this.api.updateQuestion(this.editId, question).then((questionsList: Question[]) => {
           console.log(questionsList);
-          this.router.navigate(['/questions-list']);
+          this.router.navigate(['/1/questions-list']);
         });
       } else {
         this.api.insertQuestion(question).then((questionsList: Question[]) => {

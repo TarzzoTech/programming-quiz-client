@@ -61,6 +61,6 @@ export class QuestionsListComponent implements OnInit {
 
   onEditQuestion(questionId: string) {
     this.data.onEditQuestion.next(questionId);
-    this.router.navigate(['/data-entry']);
+    this.router.navigate(['/1/data-entry/edit']);
   }
 }

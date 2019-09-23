@@ -63,11 +63,11 @@ export class FileEntryComponent implements OnInit {
 
   onSubmit() {
     console.log(this.Refined_XLSX_JSON);
-    this.router.navigate(['/questions-list']);
+    this.router.navigate(['/1/questions-list']);
   }
 
   onBack() {
-    this.router.navigate(['/data-entry']);
+    this.router.navigate(['/1/data-entry']);
   }
 
 }

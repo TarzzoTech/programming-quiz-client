@@ -40,12 +40,13 @@ export class AppComponent  implements OnInit, OnDestroy {
   addQuestions() {
     this.api.getLanguagesCollection().then((languagesCollection: LanguageStructure[]) => {
       this.data.setLanguagesCollection(languagesCollection);
-      this.router.navigate(['/data-entry']);
+      this.data.onEditQuestion.next('');
+      this.router.navigate(['/1/data-entry']);
     }).catch(error => console.log(error));
   }
 
   goToTrash() {
-    this.router.navigate(['/trash']);
+    this.router.navigate(['/1/trash']);
   }
 
   ngOnDestroy() {

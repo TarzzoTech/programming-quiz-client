@@ -11,6 +11,7 @@ import { TrashComponent } from './components/trash/trash.component';
 import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
 import { FileEntryComponent } from './components/data-entry/file-entry/file-entry.component';
 import { FormEntryComponent } from './components/data-entry/form-entry/form-entry.component';
+import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 
 
 const routes: Routes = [
@@ -19,30 +20,40 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'questions-list',
-    component: QuestionsListComponent
-  },
-  {
-    path: 'dashboard',
-    component: MarksDashboardComponent
-  },
-  {
-    path: 'data-entry',
-    component: DataEntryComponent,
+    path: '1',
+    canActivate: [AuthGuard],
     children: [
       {
-        path: '',
-        component: FormEntryComponent
+        path: 'questions-list',
+        component: QuestionsListComponent
       },
       {
-        path: 'file',
-        component: FileEntryComponent
+        path: 'dashboard',
+        component: MarksDashboardComponent
+      },
+      {
+        path: 'data-entry',
+        component: DataEntryComponent,
+        children: [
+          {
+            path: '',
+            component: FormEntryComponent
+          },
+          {
+            path: 'edit',
+            component: FormEntryComponent
+          },
+          {
+            path: 'file',
+            component: FileEntryComponent
+          }
+        ]
+      },
+      {
+        path: 'trash',
+        component: TrashComponent
       }
     ]
-  },
-  {
-    path: 'trash',
-    component: TrashComponent
   },
   {
     path: 'languages',

@@ -86,7 +86,11 @@ export class FormEntryComponent implements OnInit, OnDestroy {
           Validators.required
         ]
       }),
-      Score: new FormControl(questionsEntry.Score),
+      Score: new FormControl(questionsEntry.Score, {
+        validators: [
+          Validators.required
+        ]
+      }),
       Title: new FormControl(questionsEntry.Title, {
         validators: [
           Validators.required

@@ -25,6 +25,7 @@ export class MarksDashboardComponent implements OnInit {
   ngOnInit() {
     this.api.getQuizDataCollection().then(response => {
       if (response) {
+        this.data.setDashboardData(response);
         new DashboardDataBuilder(response).then(dashboardData => {
           this.dataSource = dashboardData;
           this.dashboardKeys = Object.keys(this.dataSource);

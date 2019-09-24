@@ -1,4 +1,4 @@
-import { Question, QuestionsEntry } from '../models';
+import { Question, QuestionsEntry, DEFAULT_SCORE } from '../models';
 
 export class QuestionBuilder {
   question: Question = {
@@ -12,7 +12,7 @@ export class QuestionBuilder {
     },
     Answer: '',
     LanguageId: '',
-    Score: 0,
+    Score: DEFAULT_SCORE,
     SelectedAnswers: '',
     IsActive: true
   };
@@ -25,7 +25,7 @@ export class QuestionBuilder {
     this.question.Options.B = questionsEntry.OptionB;
     this.question.Options.C = questionsEntry.OptionC;
     this.question.Options.D = questionsEntry.OptionD;
-    this.question.Score = questionsEntry.Score;
+    this.question.Score = questionsEntry.Score || DEFAULT_SCORE;
     this.question.SelectedAnswers = '';
     this.question.IsActive = true;
   }

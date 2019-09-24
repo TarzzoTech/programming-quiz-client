@@ -4,7 +4,7 @@ export interface Question {
   Title: string;
   Description: string;
   Options: QuestionOption;
-  Answer: string;
+  Answer?: string;
   Score: number;
   SelectedAnswers: string | null | undefined;
   IsActive: boolean;

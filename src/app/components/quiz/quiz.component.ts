@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { QuesViewMode, QuizEntryResponse, QuizEntry } from 'src/app/models';
+import { QuesViewMode, QuizEntry } from 'src/app/models';
 import { QuizService } from 'src/app/services/quiz.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { AuthService } from 'src/app/services/auth.service';
 import { ApiService } from 'src/app/services/api.service';
+import { questionsEntry } from 'src/app/Utility';
 
 @Component({
   selector: 'app-quiz',
@@ -61,15 +62,18 @@ export class QuizComponent implements OnInit {
   }
 
   submitQuiz(): void {
-    this.viewMode = QuesViewMode.END;
     this.showSubmitBtn = false;
-    this.scorecard = this.quiz.calculateMyScore();
+    const questions = this.quiz.getQuestions();
+    const SelectedLanguage = this.quiz.getSelectedLanguage();
     const userDetails = this.auth.getUserDetails();
     const quizEntry: QuizEntry = {
       ...userDetails,
-      Score: this.scorecard
+      SelectedLanguage,
+      QuestionEntry: questionsEntry(questions)
     };
-    this.api.insertUserQuiz(quizEntry).then(() => {
+    this.api.insertUserQuiz(quizEntry).then((score: string) => {
+      this.scorecard = score;
+      this.viewMode = QuesViewMode.END;
       this.auth.resetAll();
     }).catch(error => console.log(error));
   }

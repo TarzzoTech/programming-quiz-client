@@ -41,6 +41,7 @@ export class AuthService {
   }
 
   init(): void {
+    this.resetAll();
     const role = this.storage.getItem('role');
     if (role && role !== 'undefined') {
       this.role = JSON.parse(role);

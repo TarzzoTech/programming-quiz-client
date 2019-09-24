@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Dashboard, DashboardData, Question, LanguageStructure, LanguagesList, DataEntry } from '../models';
+import { Dashboard, Question, LanguageStructure, DataEntry } from '../models';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -25,14 +25,6 @@ export class DataService {
 
   getDashboardData(): Dashboard {
     return JSON.parse(JSON.stringify(this.DashboardData));
-  }
-
-  setQuizData(dataEntry: DataEntry[]): void {
-    this.QuizData = dataEntry;
-  }
-
-  getQuizData(): DataEntry[] {
-    return this.QuizData.slice(0);
   }
 
   // set list of languages on data entry page load

@@ -1,16 +1,10 @@
 import { Injectable } from '@angular/core';
 import {
-  Questions,
   Question,
   SelectedAnswers,
   LanguageStructure,
-  Languages,
-  Language,
-  TOTAL_SCORE,
-  ACTUAL_SCORE,
-  DEFAULT_SCORE
 } from '../models';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,22 +15,11 @@ export class QuizService {
   private AvailableLanguages: LanguageStructure[] = [];
   private selectedLanguage: string;
   onQuestionSelect: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  private TotalScore = TOTAL_SCORE;
-  private ActualScore = ACTUAL_SCORE;
-  private DefaultScore = DEFAULT_SCORE;
 
   constructor() { }
 
-  private calculateActualScore() {
-    this.ActualScore = ACTUAL_SCORE;
-    this.Questions.forEach(q => {
-      this.ActualScore += q.Score || this.DefaultScore;
-    });
-  }
-
   setQuestions(questions: Question[]): void {
     this.Questions = questions;
-    this.calculateActualScore();
   }
 
   setLanguage(langId: string) {
@@ -47,12 +30,12 @@ export class QuizService {
     return this.Questions.slice(0);
   }
 
-  setAvailableLanguages(availableLanguages: LanguageStructure[]) {
-    this.AvailableLanguages = availableLanguages;
+  getSelectedLanguage() {
+    return this.selectedLanguage;
   }
 
-  getLanguages(): LanguageStructure[] {
-    return this.AvailableLanguages.slice(0);
+  setAvailableLanguages(availableLanguages: LanguageStructure[]) {
+    this.AvailableLanguages = availableLanguages;
   }
 
   getLanguageName(): string {
@@ -82,15 +65,5 @@ export class QuizService {
       }
       return sa;
     });
-  }
-
-  calculateMyScore(): string {
-    this.TotalScore = TOTAL_SCORE;
-    this.Questions.forEach(q => {
-      if (q.Answer === q.SelectedAnswers) {
-        this.TotalScore += q.Score || this.DefaultScore;
-      }
-    });
-    return `${this.TotalScore}/${this.ActualScore}`;
   }
 }

@@ -1,4 +1,4 @@
-import { QuestionsEntry, Question } from '../models';
+import { QuestionsEntry, Question, DEFAULT_SCORE } from '../models';
 export class QuestionsEntryBuilder {
     questionsEntry: QuestionsEntry = {
         LanguageId: '',
@@ -9,7 +9,7 @@ export class QuestionsEntryBuilder {
         OptionC: '',
         OptionD: '',
         Answer: '',
-        Score: 5
+        Score: DEFAULT_SCORE
     };
     constructor(defaultEntry?: Question | null) {
         if (defaultEntry) {

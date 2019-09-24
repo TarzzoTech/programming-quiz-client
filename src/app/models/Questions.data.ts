@@ -23,7 +23,7 @@ export const Questions = [
       A: 'option 1',
       B: 'option 2',
       C: 'option 3',
-      D: 'option 4'
+      D: 'option 5'
     },
     Answer: 'a',
     LanguageId: 'JavaScript',

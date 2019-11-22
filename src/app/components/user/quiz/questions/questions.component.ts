@@ -28,11 +28,13 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       this.questionNumber = qNum + 1;
       this.question = this.quiz.getQuestion(qNum);
       this.questionOptions = [];
-      Object.keys(this.question.Options).forEach(qKey => {
-        if (this.question.Options[qKey] && qKey !== '_id') {
-          this.questionOptions.push(qKey);
-        }
-      });
+      if (this.question) {
+        Object.keys(this.question.Options).forEach(qKey => {
+          if (this.question.Options[qKey] && qKey !== '_id') {
+            this.questionOptions.push(qKey);
+          }
+        });
+      }
       this.selectedOption = this.question.SelectedAnswers;
     });
   }

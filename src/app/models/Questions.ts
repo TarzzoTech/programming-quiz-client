@@ -16,7 +16,7 @@ export interface Language {
   Questions: Question[];
 }
 
-export interface LanguageStructure {
+export interface Topic {
   Name: string;
   Code: string;
 }

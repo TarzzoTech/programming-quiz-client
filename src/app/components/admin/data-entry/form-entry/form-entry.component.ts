@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { QuestionsEntry, LanguageStructure, Question } from 'src/app/models';
+import { QuestionsEntry, Topic, Question } from 'src/app/models';
 import { QuestionsEntryBuilder, QuestionBuilder } from 'src/app/builders';
 import {Observable, Subscription} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -17,12 +17,12 @@ import { DEFAULT_ADMIN_ROUTE } from 'src/app/Utility';
 export class FormEntryComponent implements OnInit, OnDestroy {
 
   questionEntryForm: FormGroup;
-  languagesList: LanguageStructure[] = [];
+  languagesList: Topic[] = [];
   questionsEntry: QuestionsEntryBuilder;
   questionId = '';
   editId = '';
   actionLabel = 'Add';
-  filteredOptions: Observable<LanguageStructure[]>;
+  filteredOptions: Observable<Topic[]>;
   editQuestionSubscription: Subscription;
 
   constructor(
@@ -75,7 +75,7 @@ export class FormEntryComponent implements OnInit, OnDestroy {
     return language ? language.Name : undefined;
   }
 
-  private _filter(name: string): LanguageStructure[] {
+  private _filter(name: string): Topic[] {
     const filterValue = name.toLowerCase();
     return this.languagesList.filter(option => option.Name.toLowerCase().indexOf(filterValue) === 0);
   }

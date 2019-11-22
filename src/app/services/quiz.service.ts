@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   Question,
   SelectedAnswers,
-  LanguageStructure,
+  Topic,
 } from '../models';
 import { BehaviorSubject } from 'rxjs';
 
@@ -12,7 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 export class QuizService {
   private Questions: Question[] = [];
   // Available Languages with questions
-  private AvailableLanguages: LanguageStructure[] = [];
+  private AvailableLanguages: Topic[] = [];
   private selectedLanguage: string;
   onQuestionSelect: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
@@ -34,7 +34,7 @@ export class QuizService {
     return this.selectedLanguage;
   }
 
-  setAvailableLanguages(availableLanguages: LanguageStructure[]) {
+  setAvailableLanguages(availableLanguages: Topic[]) {
     this.AvailableLanguages = availableLanguages;
   }
 

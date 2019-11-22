@@ -74,7 +74,7 @@ export class QuizComponent implements OnInit {
     this.api.insertUserQuiz(quizEntry).then((score: string) => {
       this.scorecard = score;
       this.viewMode = QuesViewMode.END;
-      this.auth.resetAll();
+      // this.auth.resetAll();
     }).catch(error => console.log(error));
   }
 }

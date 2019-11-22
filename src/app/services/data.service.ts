@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Dashboard, Question, LanguageStructure, DataEntry } from '../models';
+import { Dashboard, Question, Topic, DataEntry } from '../models';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class DataService {
   // date wise score details storage
   private DashboardData: Dashboard = {} as Dashboard;
   // list of languages storage
-  private LanguagesList: LanguageStructure[] = [];
+  private LanguagesList: Topic[] = [];
   // file data entry list of language based questions storage
   private QuizData: DataEntry[] = [];
   // subscribe on question edit click
@@ -28,11 +28,11 @@ export class DataService {
   }
 
   // set list of languages on data entry page load
-  setLanguagesCollection(languagesList: LanguageStructure[]): void {
+  setLanguagesCollection(languagesList: Topic[]): void {
     this.LanguagesList = languagesList;
   }
 
-  getLanguagesCollection(): LanguageStructure[] {
+  getLanguagesCollection(): Topic[] {
     return this.LanguagesList.slice(0);
   }
 

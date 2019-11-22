@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Question, Language, LanguageStructure } from 'src/app/models';
+import { Question, Language, Topic } from 'src/app/models';
 import { ApiService } from 'src/app/services/api.service';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ export class QuestionsListComponent implements OnInit {
 
   languagesQuestions: Language[] = [];
   allQuestions: Question[] = [];
-  languagesList: LanguageStructure[] = [];
+  languagesList: Topic[] = [];
   selectedLanguage = '';
   selectedLanguageQuestions: Question[] = [];
 
@@ -31,7 +31,7 @@ export class QuestionsListComponent implements OnInit {
   init() {
     this.languagesList = this.data.getLanguagesCollection();
     if (this.languagesList && this.languagesList.length === 0) {
-      this.api.getLanguagesCollection().then((languagesCollection: LanguageStructure[]) => {
+      this.api.getLanguagesCollection().then((languagesCollection: Topic[]) => {
         this.data.setLanguagesCollection(languagesCollection);
         this.languagesList = languagesCollection;
         this.getQuestion();

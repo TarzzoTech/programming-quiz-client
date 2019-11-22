@@ -8,4 +8,5 @@ export interface DashboardItem {
     Score: string;
     Name: string;
     CreatedDate: Date;
+    TopicId: string;
 }

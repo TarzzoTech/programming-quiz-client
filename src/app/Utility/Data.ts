@@ -1,4 +1,4 @@
-import { Language, Question, LanguageStructure } from '../models';
+import { Language, Question, Topic } from '../models';
 
 export const getLanguagesList = (list: Question[] = []): string[] => {
   const languagesList: string[] = [];
@@ -38,7 +38,7 @@ const buildQuestionsList = (
   return questions;
 };
 
-export const dataReStructure = (dataList: Question[] = [], languageCollection: LanguageStructure[]): Language[] => {
+export const dataReStructure = (dataList: Question[] = [], languageCollection: Topic[]): Language[] => {
   const dataEntry: Language[] = [];
   if (dataList.length > 0) {
     const languagesList: string[] = getLanguagesList(dataList);

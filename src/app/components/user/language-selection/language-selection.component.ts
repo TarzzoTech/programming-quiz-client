@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Language, LanguageStructure, Question } from 'src/app/models';
+import { Language, Topic, Question } from 'src/app/models';
 import { QuizService } from 'src/app/services/quiz.service';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
@@ -13,14 +13,14 @@ import { DEFAULT_USER_ROUTE } from 'src/app/Utility';
 export class LanguageSelectionComponent implements OnInit {
 
   selectedLanguage: string;
-  availableLanguages: LanguageStructure[] = [];
+  availableLanguages: Topic[] = [];
 
   constructor(
     private router: Router,
     private quiz: QuizService,
     private api: ApiService
   ) {
-    this.api.getAvailableLanguages().then((availableLanguages: LanguageStructure[]) => {
+    this.api.getAvailableLanguages().then((availableLanguages: Topic[]) => {
       this.availableLanguages = availableLanguages;
       this.quiz.setAvailableLanguages(availableLanguages);
     }).catch(error => console.log(error));

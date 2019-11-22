@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { Role, LanguageStructure } from './models';
+import { Role, Topic } from './models';
 import { ApiService } from './services/api.service';
 import { DataService } from './services/data.service';
 import { DEFAULT_ADMIN_ROUTE } from './Utility';
@@ -38,7 +38,7 @@ export class AppComponent  implements OnInit, OnDestroy {
   }
 
   addQuestions() {
-    this.api.getLanguagesCollection().then((languagesCollection: LanguageStructure[]) => {
+    this.api.getLanguagesCollection().then((languagesCollection: Topic[]) => {
       this.data.setLanguagesCollection(languagesCollection);
       this.data.onEditQuestion.next('');
       this.router.navigate([`${DEFAULT_ADMIN_ROUTE}data-entry`]);
@@ -51,6 +51,10 @@ export class AppComponent  implements OnInit, OnDestroy {
 
   gotToSettings() {
     this.router.navigate([`${DEFAULT_ADMIN_ROUTE}settings`]);
+  }
+
+  goToDashboard() {
+    this.router.navigate([`${DEFAULT_ADMIN_ROUTE}dashboard`]);
   }
 
   ngOnDestroy() {

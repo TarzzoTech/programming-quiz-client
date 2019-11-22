@@ -7,6 +7,8 @@
             </span>
         </section>
         <section *ngIf="mode===role.ADMIN" class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+            <button (click)="goToDashboard()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
+            aria-label="dashboard" matTooltip="Dashboard">dashboard</button>
             <button (click)="addQuestions()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
             aria-label="add-questions" matTooltip="Add questions">note_add</button>
             <button (click)="goToTrash()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
@@ -18,6 +20,8 @@
         </section>
         <section *ngIf="mode===role.USER" class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end user_section">
             <span>Welcome <b><i>{{name}}</i></b></span>
+            <button (click)="logout()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
+            aria-label="logout" matTooltip="Logout">power_settings_new</button>
         </section>
     </div>
 </header>

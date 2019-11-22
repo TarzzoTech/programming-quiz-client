@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
+import { DEFAULT_ADMIN_ROUTE } from 'src/app/Utility';
 
 @Component({
   selector: 'app-file-entry',
@@ -63,11 +64,11 @@ export class FileEntryComponent implements OnInit {
 
   onSubmit() {
     console.log(this.Refined_XLSX_JSON);
-    this.router.navigate(['/1/questions-list']);
+    this.router.navigate([`${DEFAULT_ADMIN_ROUTE}questions-list`]);
   }
 
   onBack() {
-    this.router.navigate(['/1/data-entry']);
+    this.router.navigate([`${DEFAULT_ADMIN_ROUTE}data-entry`]);
   }
 
 }

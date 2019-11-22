@@ -17,24 +17,29 @@ import { MatListModule } from '@angular/material/list';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { QuestionsListComponent } from './components/questions-list/questions-list.component';
-import { MarksDashboardComponent } from './components/marks-dashboard/marks-dashboard.component';
-import { QuizComponent } from './components/quiz/quiz.component';
-import { InstructionsComponent } from './components/quiz/instructions/instructions.component';
-import { QuestionsComponent } from './components/quiz/questions/questions.component';
-import { EndComponent } from './components/quiz/end/end.component';
+import { QuestionsListComponent } from './components/admin/questions-list/questions-list.component';
+import { MarksDashboardComponent } from './components/admin/marks-dashboard/marks-dashboard.component';
+import { QuizComponent } from './components/user/quiz/quiz.component';
+import { InstructionsComponent } from './components/user/quiz/instructions/instructions.component';
+import { QuestionsComponent } from './components/user/quiz/questions/questions.component';
+import { EndComponent } from './components/user/quiz/end/end.component';
 import { NoRouteComponent } from './components/no-route/no-route.component';
 import { AuthService } from './services/auth.service';
 import { MatButtonModule } from '@angular/material/button';
 import { QuizService } from './services/quiz.service';
 import { ApiService } from './services/api.service';
-import { DataEntryComponent } from './components/data-entry/data-entry.component';
-import { TrashComponent } from './components/trash/trash.component';
-import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
+import { DataEntryComponent } from './components/admin/data-entry/data-entry.component';
+import { TrashComponent } from './components/admin/trash/trash.component';
+import { LanguageSelectionComponent } from './components/user/language-selection/language-selection.component';
 import { DataService } from './services/data.service';
-import { FileEntryComponent } from './components/data-entry/file-entry/file-entry.component';
-import { FormEntryComponent } from './components/data-entry/form-entry/form-entry.component';
+import { FileEntryComponent } from './components/admin/data-entry/file-entry/file-entry.component';
+import { FormEntryComponent } from './components/admin/data-entry/form-entry/form-entry.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { AdminComponent } from './components/admin/admin.component';
+import { UserComponent } from './components/user/user.component';
+import { SettingsComponent } from './components/admin/settings/settings.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { QuestionAnswersComponent } from './components/user/quiz/question-answers/question-answers.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +56,12 @@ import { AuthGuardService } from './services/auth-guard.service';
     TrashComponent,
     LanguageSelectionComponent,
     FileEntryComponent,
-    FormEntryComponent
+    FormEntryComponent,
+    AdminComponent,
+    UserComponent,
+    SettingsComponent,
+    LayoutComponent,
+    QuestionAnswersComponent
   ],
   imports: [
     BrowserModule,

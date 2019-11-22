@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Role, LoginMode } from 'src/app/models';
+import { DEFAULT_ADMIN_ROUTE, DEFAULT_USER_ROUTE } from 'src/app/Utility';
 
 @Component({
   selector: 'app-login',
@@ -57,7 +58,7 @@ export class LoginComponent implements OnInit {
     if (this.nameFormControl.status === 'VALID') {
       this.auth.setRole(Role.USER);
       this.auth.setName(this.nameFormControl.value);
-      this.router.navigate(['/languages']);
+      this.router.navigate([`${DEFAULT_USER_ROUTE}languages`]);
     }
   }
 
@@ -69,7 +70,7 @@ export class LoginComponent implements OnInit {
         if (res) {
           this.auth.setRole(Role.ADMIN);
           this.auth.authenticate();
-          this.router.navigate(['/1/dashboard']);
+          this.router.navigate([`${DEFAULT_ADMIN_ROUTE}dashboard`]);
         }
       }).catch(error => console.log(error));
     }

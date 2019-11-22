@@ -2,16 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
-import { QuestionsListComponent } from './components/questions-list/questions-list.component';
-import { MarksDashboardComponent } from './components/marks-dashboard/marks-dashboard.component';
-import { QuizComponent } from './components/quiz/quiz.component';
+import { QuestionsListComponent } from './components/admin/questions-list/questions-list.component';
+import { MarksDashboardComponent } from './components/admin/marks-dashboard/marks-dashboard.component';
+import { QuizComponent } from './components/user/quiz/quiz.component';
 import { NoRouteComponent } from './components/no-route/no-route.component';
-import { DataEntryComponent } from './components/data-entry/data-entry.component';
-import { TrashComponent } from './components/trash/trash.component';
-import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
-import { FileEntryComponent } from './components/data-entry/file-entry/file-entry.component';
-import { FormEntryComponent } from './components/data-entry/form-entry/form-entry.component';
+import { DataEntryComponent } from './components/admin/data-entry/data-entry.component';
+import { TrashComponent } from './components/admin/trash/trash.component';
+import { LanguageSelectionComponent } from './components/user/language-selection/language-selection.component';
+import { FileEntryComponent } from './components/admin/data-entry/file-entry/file-entry.component';
+import { FormEntryComponent } from './components/admin/data-entry/form-entry/form-entry.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
+import { AdminComponent } from './components/admin/admin.component';
+import { UserComponent } from './components/user/user.component';
+import { SettingsComponent } from './components/admin/settings/settings.component';
 
 
 const routes: Routes = [
@@ -22,6 +25,7 @@ const routes: Routes = [
   {
     path: '1',
     canActivate: [AuthGuard],
+    component: AdminComponent,
     children: [
       {
         path: 'questions-list',
@@ -52,16 +56,26 @@ const routes: Routes = [
       {
         path: 'trash',
         component: TrashComponent
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent
       }
     ]
   },
   {
-    path: 'languages',
-    component: LanguageSelectionComponent
-  },
-  {
-    path: 'quiz',
-    component: QuizComponent
+    path: '0',
+    component: UserComponent,
+    children: [
+      {
+        path: 'languages',
+        component: LanguageSelectionComponent
+      },
+      {
+        path: 'quiz',
+        component: QuizComponent
+      },
+    ]
   },
   {
     path: '404',

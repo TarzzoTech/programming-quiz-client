@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Role, LanguageStructure } from './models';
 import { ApiService } from './services/api.service';
 import { DataService } from './services/data.service';
-import { browser } from 'protractor';
+import { DEFAULT_ADMIN_ROUTE } from './Utility';
 
 @Component({
   selector: 'app-root',
@@ -41,12 +41,16 @@ export class AppComponent  implements OnInit, OnDestroy {
     this.api.getLanguagesCollection().then((languagesCollection: LanguageStructure[]) => {
       this.data.setLanguagesCollection(languagesCollection);
       this.data.onEditQuestion.next('');
-      this.router.navigate(['/1/data-entry']);
+      this.router.navigate([`${DEFAULT_ADMIN_ROUTE}data-entry`]);
     }).catch(error => console.log(error));
   }
 
   goToTrash() {
-    this.router.navigate(['/1/trash']);
+    this.router.navigate([`${DEFAULT_ADMIN_ROUTE}trash`]);
+  }
+
+  gotToSettings() {
+    this.router.navigate([`${DEFAULT_ADMIN_ROUTE}settings`]);
   }
 
   ngOnDestroy() {
@@ -54,7 +58,8 @@ export class AppComponent  implements OnInit, OnDestroy {
     this.nameSyncSubscription.unsubscribe();
   }
 
-  reset() {
+  logout() {
     this.auth.resetAll();
+    this.router.navigate([`/login`]);
   }
 }

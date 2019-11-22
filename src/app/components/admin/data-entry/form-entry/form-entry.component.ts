@@ -7,6 +7,7 @@ import {Observable, Subscription} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 import { ApiService } from 'src/app/services/api.service';
+import { DEFAULT_ADMIN_ROUTE } from 'src/app/Utility';
 
 @Component({
   selector: 'app-form-entry',
@@ -122,11 +123,11 @@ export class FormEntryComponent implements OnInit, OnDestroy {
   }
 
   onInsertFile() {
-    this.router.navigate(['/1/data-entry/file']);
+    this.router.navigate([`${DEFAULT_ADMIN_ROUTE}data-entry/file`]);
   }
 
   goQuestionsList() {
-    this.router.navigate(['/1/questions-list']);
+    this.router.navigate([`${DEFAULT_ADMIN_ROUTE}questions-list`]);
   }
 
   onSubmit = () => {
@@ -135,7 +136,7 @@ export class FormEntryComponent implements OnInit, OnDestroy {
       if (this.editId) {
         this.api.updateQuestion(this.editId, question).then((questionsList: Question[]) => {
           console.log(questionsList);
-          this.router.navigate(['/1/questions-list']);
+          this.router.navigate([`${DEFAULT_ADMIN_ROUTE}questions-list`]);
         });
       } else {
         this.api.insertQuestion(question).then((questionsList: Question[]) => {

@@ -3,7 +3,7 @@ import { Question, Language, LanguageStructure } from 'src/app/models';
 import { ApiService } from 'src/app/services/api.service';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
-import { dataReStructure } from 'src/app/Utility';
+import { dataReStructure, DEFAULT_ADMIN_ROUTE } from 'src/app/Utility';
 
 @Component({
   selector: 'app-questions-list',
@@ -61,6 +61,6 @@ export class QuestionsListComponent implements OnInit {
 
   onEditQuestion(questionId: string) {
     this.data.onEditQuestion.next(questionId);
-    this.router.navigate(['/1/data-entry/edit']);
+    this.router.navigate([`${DEFAULT_ADMIN_ROUTE}data-entry/edit`]);
   }
 }

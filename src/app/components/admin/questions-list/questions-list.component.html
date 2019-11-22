@@ -1,7 +1,7 @@
 <mat-drawer-container class="questions-list-drawer-container">
-    <mat-drawer class="languages-drawer" #drawer [mode]="'side'" opened>
+    <mat-drawer class="topics-drawer" #drawer [mode]="'side'" opened>
         <mat-list>
-            <h3 mat-subheader>Languages Available</h3>
+            <h3 mat-subheader>Topics Available</h3>
             <ul class="list-group">
                 <li class="list-group-item cursor-pointer d-flex"
                     [ngClass]="{'active': selectedLanguage === language.Id}"
@@ -9,7 +9,7 @@
                     (click)="onLanguageSelect(language)"
                 >
                     <div><mat-icon mat-list-icon>folder</mat-icon></div>
-                    <div><h4 mat-line class="text-truncate language-list-item-title">{{language.Title}}</h4></div>
+                    <div><h4 mat-line class="text-truncate topics-list-item-title">{{language.Title}}</h4></div>
                 </li>
             </ul>
           </mat-list>

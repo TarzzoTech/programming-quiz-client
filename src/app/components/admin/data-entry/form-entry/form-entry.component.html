@@ -11,7 +11,7 @@
     <form class="question-entry-form d-flex flex-column" [formGroup]='questionEntryForm' (ngSubmit)='onSubmit()'>
       <div class="language-score-block d-flex flex-row w-100 justify-content-between mr-5">
         <mat-form-field class="language-input">
-          <input type="text" placeholder="Language" matInput formControlName='LanguageId' [matAutocomplete]="auto"
+          <input type="text" placeholder="Topics" matInput formControlName='LanguageId' [matAutocomplete]="auto"
             required>
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             <mat-option *ngFor="let option of filteredOptions | async" [value]="option.Code">

@@ -1,4 +1,4 @@
-export const LanguagesList = [
+export const TopicsList = [
     {
       Name: 'A# .NET',
       Code: 'Asharp_dot_NET'

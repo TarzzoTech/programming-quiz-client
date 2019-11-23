@@ -1,10 +1,8 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
-import { AuthService } from './services/auth.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AuthService, DataService, ApiService } from './services';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { Role, Topic } from './models';
-import { ApiService } from './services/api.service';
-import { DataService } from './services/data.service';
 import { DEFAULT_ADMIN_ROUTE } from './Utility';
 
 @Component({
@@ -55,6 +53,10 @@ export class AppComponent  implements OnInit, OnDestroy {
 
   goToDashboard() {
     this.router.navigate([`${DEFAULT_ADMIN_ROUTE}dashboard`]);
+  }
+
+  goQuestionsList() {
+    this.router.navigate([`${DEFAULT_ADMIN_ROUTE}questions-list`]);
   }
 
   ngOnDestroy() {

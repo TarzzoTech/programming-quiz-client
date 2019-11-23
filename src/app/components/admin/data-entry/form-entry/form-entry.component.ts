@@ -5,8 +5,7 @@ import { QuestionsEntry, Topic, Question } from 'src/app/models';
 import { QuestionsEntryBuilder, QuestionBuilder } from 'src/app/builders';
 import {Observable, Subscription} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import { DataService } from 'src/app/services/data.service';
-import { ApiService } from 'src/app/services/api.service';
+import { DataService, ApiService } from 'src/app/services';
 import { DEFAULT_ADMIN_ROUTE } from 'src/app/Utility';
 
 @Component({

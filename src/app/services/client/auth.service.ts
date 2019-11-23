@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Role, UserDetails } from '../models';
+import { Role, UserDetails } from '../../models';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -19,6 +19,7 @@ export class AuthService {
     this.init();
   }
 
+  // setting the email to service and local storage on login
   setEmail(email: string) {
     this.storage.removeItem('email');
     this.storage.setItem('email', email);
@@ -89,6 +90,7 @@ export class AuthService {
     this.nameSync.next(name);
   }
 
+  // resetting all the local storage values and logout;
   resetAll(): void {
     this.role = null;
     this.name = '';

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
-import { Question, SelectedAnswers, QuestionOption } from 'src/app/models';
+import { Question, SelectedAnswers } from 'src/app/models';
 import { Subscription } from 'rxjs';
-import { QuizService } from 'src/app/services/quiz.service';
+import { QuizService } from 'src/app/services';
 // import { EmptyQuestionBuilder } from 'src/app/builders';
 
 @Component({

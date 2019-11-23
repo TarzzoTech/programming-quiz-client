@@ -15,14 +15,16 @@
           </mat-list>
     </mat-drawer>
     <mat-drawer-content>
-        <mat-list class="w-100 mr-5">
+        <mat-list class="w-100">
             <h3 mat-subheader class="pl-0">Questions</h3>
             <ul class="list-group">
                 <li class="list-group-item cursor-pointer d-flex" *ngFor="let question of selectedLanguageQuestions">
                     <div><mat-icon mat-list-icon>question_answer</mat-icon></div>
-                    <div class="d-flex w-100 justify-content-between">
-                        <div>
-                            <h4 mat-line class="text-truncate questions-list-item-title">{{question.Title}}</h4>
+                    <div class="d-flex custom-width justify-content-between">
+                        <div class="custom-width">
+                            <h4 mat-line class="text-truncate questions-list-item-title" [title]="question.Title">
+                                {{question.Title}}
+                            </h4>
                         </div>
                         <div><mat-icon mat-list-icon (click)="onEditQuestion(question._id)">edit</mat-icon></div>
                     </div>

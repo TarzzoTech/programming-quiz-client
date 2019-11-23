@@ -11,7 +11,7 @@ import { TrashComponent } from './components/admin/trash/trash.component';
 import { LanguageSelectionComponent } from './components/user/language-selection/language-selection.component';
 import { FileEntryComponent } from './components/admin/data-entry/file-entry/file-entry.component';
 import { FormEntryComponent } from './components/admin/data-entry/form-entry/form-entry.component';
-import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
+import { AuthGuardService as AuthGuard } from './services';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserComponent } from './components/user/user.component';
 import { SettingsComponent } from './components/admin/settings/settings.component';

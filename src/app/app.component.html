@@ -9,6 +9,8 @@
         <section *ngIf="mode===role.ADMIN" class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
             <button (click)="goToDashboard()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
             aria-label="dashboard" matTooltip="Dashboard">dashboard</button>
+            <button (click)="goQuestionsList()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
+            aria-label="questions list" matTooltip="Questions List">question_answer</button>
             <button (click)="addQuestions()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
             aria-label="add-questions" matTooltip="Add questions">note_add</button>
             <button (click)="goToTrash()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"

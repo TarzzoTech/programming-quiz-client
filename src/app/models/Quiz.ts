@@ -17,5 +17,4 @@ export interface QuizQuestionEntry {
     SelectedAnswer: string;
 }
 
-
 export const DEFAULT_SCORE = 1;

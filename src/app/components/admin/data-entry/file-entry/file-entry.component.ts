@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
-import { DataService } from 'src/app/services/data.service';
+import { DataService } from 'src/app/services';
 import { Router } from '@angular/router';
 import { DEFAULT_ADMIN_ROUTE } from 'src/app/Utility';
 

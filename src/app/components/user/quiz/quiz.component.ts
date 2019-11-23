@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuesViewMode, QuizEntry } from 'src/app/models';
-import { QuizService } from 'src/app/services/quiz.service';
+import { QuizService, AuthService, ApiService } from 'src/app/services';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { AuthService } from 'src/app/services/auth.service';
-import { ApiService } from 'src/app/services/api.service';
 import { questionsEntry } from 'src/app/Utility';
 
 @Component({

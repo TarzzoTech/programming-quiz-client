@@ -3,7 +3,7 @@ import {
   Question,
   SelectedAnswers,
   Topic,
-} from '../models';
+} from '../../models';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

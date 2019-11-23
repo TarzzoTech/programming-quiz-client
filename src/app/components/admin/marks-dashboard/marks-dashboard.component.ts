@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Dashboard, Topic } from 'src/app/models';
-import { DataService } from 'src/app/services/data.service';
-import { ApiService } from 'src/app/services/api.service';
+import { DataService, ApiService } from 'src/app/services';
 import { DashboardDataBuilder } from 'src/app/builders';
 
 @Component({

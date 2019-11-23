@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  Question, QuizEntry } from '../models';
+import {  Question, QuizEntry } from '../../models';
 import { HttpClient } from '@angular/common/http';
 
 const API_URL = 'http://localhost:3000/';
@@ -84,5 +84,15 @@ export class ApiService {
   // delete entire language
   deleteRecord(languageId: string) {
     return this.http.delete(`${API_URL}languages/${languageId}`).toPromise();
+  }
+
+  // get the list of questions by language
+  getSettings() {
+    return this.http.get(`${API_URL}settings`).toPromise();
+  }
+
+  // get the list of questions by language
+  getQuizInstructions() {
+    return this.http.get(`${API_URL}instructions/quiz-instructions`).toPromise();
   }
 }

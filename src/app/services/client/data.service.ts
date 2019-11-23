@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Dashboard, Question, Topic, DataEntry } from '../models';
+import { Dashboard, Question, Topic, DataEntry } from '../../models';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

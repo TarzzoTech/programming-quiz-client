@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { ApiService, AuthService } from 'src/app/services';
 import { Role, LoginMode } from 'src/app/models';
 import { DEFAULT_ADMIN_ROUTE, DEFAULT_USER_ROUTE } from 'src/app/Utility';
 

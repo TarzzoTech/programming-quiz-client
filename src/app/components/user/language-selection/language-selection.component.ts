@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Language, Topic, Question } from 'src/app/models';
-import { QuizService } from 'src/app/services/quiz.service';
+import { Topic, Question } from 'src/app/models';
+import { QuizService, ApiService } from 'src/app/services';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
 import { DEFAULT_USER_ROUTE } from 'src/app/Utility';
 
 @Component({

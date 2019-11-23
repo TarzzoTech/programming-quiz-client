@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Question, Language, Topic } from 'src/app/models';
-import { ApiService } from 'src/app/services/api.service';
-import { DataService } from 'src/app/services/data.service';
+import { ApiService, DataService } from 'src/app/services';
 import { Router } from '@angular/router';
 import { dataReStructure, DEFAULT_ADMIN_ROUTE } from 'src/app/Utility';
 

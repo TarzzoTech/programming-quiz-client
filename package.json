@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:prod": "npm build --prod",
-    "set-path": "ng build --prod --base-href 'https://prince7195.github.io/p-q/'",
+    "set-path": "ng build --prod --base-href 'https://vjd7.github.io/programming-quiz-client/'",
     "publish": "npm run set-path && ngh"
   },
   "private": true,

@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "build:prod": "npm build --prod",
     "set-path": "ng build --prod --base-href 'https://vjd7.github.io/programming-quiz-client/'",
-    "publish": "npm run set-path && ngh"
+    "publish": "npm run set-path && ngh --dir=dist/client"
   },
   "private": true,
   "dependencies": {

@@ -1,10 +1,10 @@
 export interface Question {
-  Id: string;
+  _id?: string;
   LanguageId: string;
   Title: string;
   Description: string;
   Options: QuestionOption;
-  Answer: string;
+  Answer?: string;
   Score: number;
   SelectedAnswers: string | null | undefined;
   IsActive: boolean;
@@ -16,7 +16,7 @@ export interface Language {
   Questions: Question[];
 }
 
-export interface LanguageStructure {
+export interface Topic {
   Name: string;
   Code: string;
 }

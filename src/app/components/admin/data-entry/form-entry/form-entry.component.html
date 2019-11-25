@@ -1,0 +1,59 @@
+<div class="form-data-entry p-3">
+  <div class="insert-block mb-4">
+    <!-- <button mat-stroked-button color="primary" (click)="onInsertFile()">
+        Insert file
+    </button> -->
+    <button mat-stroked-button color="primary" (click)="goQuestionsList()">
+      Questions List
+  </button>
+  </div>
+  <div class="form-data-entry-block m-5">
+    <form class="question-entry-form d-flex flex-column" [formGroup]='questionEntryForm' (ngSubmit)='onSubmit()'>
+      <div class="language-score-block d-flex flex-row w-100 justify-content-between mr-5">
+        <mat-form-field class="language-input">
+          <input type="text" placeholder="Topics" matInput formControlName='LanguageId' [matAutocomplete]="auto"
+            required>
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.Code">
+              {{option.Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field class="score-input">
+          <input matInput placeholder="Score" type="number" formControlName='Score' required/>
+          <mat-hint>Default Score is 1 if score is 0</mat-hint>
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <input matInput placeholder="Question" formControlName='Title' required />
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Question Description" formControlName='Description' required></textarea>
+      </mat-form-field>
+      <div class="question-options-block d-flex flex-row w-100 justify-content-between mr-5">
+        <mat-form-field class="options-width">
+          <input matInput placeholder="Option A" formControlName='OptionA' required />
+        </mat-form-field>
+        <mat-form-field class="options-width">
+          <input matInput placeholder="Option B" formControlName='OptionB' required />
+        </mat-form-field>
+      </div>
+      <div class="question-options-block d-flex flex-row w-100 justify-content-between mr-5">
+        <mat-form-field class="options-width">
+          <input matInput placeholder="Option C (optional)" formControlName='OptionC' />
+        </mat-form-field>
+        <mat-form-field class="options-width">
+          <input matInput placeholder="Option D (optional)" formControlName='OptionD' />
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <input matInput placeholder="Answer" formControlName='Answer' required />
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="form-data-entry-actions ml-5">
+    <button mat-raised-button [disabled]='!questionEntryForm.valid' color="primary" (click)="onSubmit()">
+      {{ actionLabel }}
+    </button>
+  </div>
+</div>

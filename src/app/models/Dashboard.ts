@@ -7,4 +7,6 @@ export interface DashboardItem {
     Email: string;
     Score: string;
     Name: string;
+    CreatedDate: Date;
+    TopicId: string;
 }

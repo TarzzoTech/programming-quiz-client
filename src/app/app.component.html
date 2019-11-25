@@ -3,17 +3,27 @@
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
             <img src="assets/images/icon.png" width="100px" alt="PQ">
             <span class="mdc-top-app-bar__title">
-                <a class="title-link" (click)="reset()" routerLink="/">Programming Quiz</a>
+                <a class="title-link" href="javascript:void(0)">Programming Quiz</a>
             </span>
         </section>
         <section *ngIf="mode===role.ADMIN" class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-            <button (click)="addQuestions()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded" aria-label="add-questions"
-                matTooltip="Add questions">note_add</button>
-            <!-- <button (click)="goToTrash()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded" aria-label="trash"
-                matTooltip="trash">delete_sweep</button> -->
+            <button (click)="goToDashboard()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
+            aria-label="dashboard" matTooltip="Dashboard">dashboard</button>
+            <button (click)="goQuestionsList()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
+            aria-label="questions list" matTooltip="Questions List">question_answer</button>
+            <button (click)="addQuestions()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
+            aria-label="add-questions" matTooltip="Add questions">note_add</button>
+            <button (click)="goToTrash()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
+            aria-label="trash" matTooltip="trash">delete_sweep</button>
+            <button (click)="gotToSettings()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
+            aria-label="settings" matTooltip="Settings">settings_applications</button>
+            <button (click)="logout()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
+            aria-label="logout" matTooltip="Logout">power_settings_new</button>
         </section>
         <section *ngIf="mode===role.USER" class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end user_section">
             <span>Welcome <b><i>{{name}}</i></b></span>
+            <button (click)="logout()" class="mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded"
+            aria-label="logout" matTooltip="Logout">power_settings_new</button>
         </section>
     </div>
 </header>

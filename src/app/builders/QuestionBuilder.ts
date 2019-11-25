@@ -1,9 +1,7 @@
-import { Question, QuestionsEntry } from '../models';
-import { generateId } from '../Utility';
+import { Question, QuestionsEntry, DEFAULT_SCORE } from '../models';
 
 export class QuestionBuilder {
   question: Question = {
-    Id: '',
     Title: '',
     Description: '',
     Options: {
@@ -14,12 +12,11 @@ export class QuestionBuilder {
     },
     Answer: '',
     LanguageId: '',
-    Score: 0,
+    Score: DEFAULT_SCORE,
     SelectedAnswers: '',
     IsActive: true
   };
   constructor(questionsEntry: QuestionsEntry) {
-    this.question.Id = generateId();
     this.question.LanguageId = questionsEntry.LanguageId;
     this.question.Title = questionsEntry.Title;
     this.question.Answer = questionsEntry.Answer;
@@ -28,7 +25,7 @@ export class QuestionBuilder {
     this.question.Options.B = questionsEntry.OptionB;
     this.question.Options.C = questionsEntry.OptionC;
     this.question.Options.D = questionsEntry.OptionD;
-    this.question.Score = questionsEntry.Score;
+    this.question.Score = questionsEntry.Score || DEFAULT_SCORE;
     this.question.SelectedAnswers = '';
     this.question.IsActive = true;
   }

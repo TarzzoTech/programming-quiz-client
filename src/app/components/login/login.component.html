@@ -18,7 +18,7 @@
             </form>
             <form class="login-form" *ngIf="viewMode === loginMode.PASSWORD" (submit)="passwordSubmit()">
                 <mat-form-field class="login-form-full-width">
-                    <input matInput type="password" placeholder="Password" (change)="invalidPassword=false" [formControl]="passwordFormControl">
+                    <input matInput type="password" placeholder="Password" [formControl]="passwordFormControl">
                     <mat-error
                         *ngIf="passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required')">
                         Password must be greater than 6 digits

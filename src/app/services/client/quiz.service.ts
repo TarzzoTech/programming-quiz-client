@@ -11,9 +11,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class QuizService {
   private Questions: Question[] = [];
-  // Available Languages with questions
-  private AvailableLanguages: Topic[] = [];
-  private selectedLanguage: string;
+  // Available Topics with questions
+  private AvailableTopics: Topic[] = [];
+  private selectedTopic: string;
   onQuestionSelect: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   constructor() { }
@@ -22,25 +22,25 @@ export class QuizService {
     this.Questions = questions;
   }
 
-  setLanguage(langId: string) {
-    this.selectedLanguage = langId;
+  setTopic(topicId: string) {
+    this.selectedTopic = topicId;
   }
 
   getQuestions(): Question[] {
     return this.Questions.slice(0);
   }
 
-  getSelectedLanguage() {
-    return this.selectedLanguage;
+  getSelectedTopic() {
+    return this.selectedTopic;
   }
 
-  setAvailableLanguages(availableLanguages: Topic[]) {
-    this.AvailableLanguages = availableLanguages;
+  setAvailableTopics(availableTopics: Topic[]) {
+    this.AvailableTopics = availableTopics;
   }
 
-  getLanguageName(): string {
-    if (this.selectedLanguage) {
-      return this.AvailableLanguages.find(l => l.Code === this.selectedLanguage).Name;
+  getTopicName(): string {
+    if (this.selectedTopic) {
+      return this.AvailableTopics.find(l => l.Code === this.selectedTopic).Name;
     } else {
       return '';
     }
@@ -51,7 +51,7 @@ export class QuizService {
   }
 
   getQuestion(num: number): Question {
-    if (this.selectedLanguage) {
+    if (this.selectedTopic) {
       return this.Questions[num];
     } else {
       return {} as Question;

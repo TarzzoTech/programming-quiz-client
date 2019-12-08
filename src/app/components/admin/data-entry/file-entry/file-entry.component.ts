@@ -13,7 +13,7 @@ export class FileEntryComponent implements OnInit {
 
   accept = '.xls,.xlsx';
   displayedColumns: string[] = [
-    'Language', 'Question', 'Description', 'Answer', 'OptionA', 'OptionB', 'OptionC', 'OptionD', 'Score'
+    'Topic', 'Question', 'Description', 'Answer', 'OptionA', 'OptionB', 'OptionC', 'OptionD', 'Score'
   ];
   XLSX_JSON = [];
   // tslint:disable-next-line: variable-name

@@ -8,7 +8,7 @@ export enum QuesViewMode {
 export interface QuizEntry {
     Name: string;
     Email: string;
-    SelectedLanguage: string;
+    SelectedTopic: string;
     QuestionEntry: QuizQuestionEntry[];
 }
 

@@ -36,8 +36,8 @@ export class AppComponent  implements OnInit, OnDestroy {
   }
 
   addQuestions() {
-    this.api.getLanguagesCollection().then((languagesCollection: Topic[]) => {
-      this.data.setLanguagesCollection(languagesCollection);
+    this.api.getTopicsCollection().then((topicsCollection: Topic[]) => {
+      this.data.setTopicsCollection(topicsCollection);
       this.data.onEditQuestion.next('');
       this.router.navigate([`${DEFAULT_ADMIN_ROUTE}data-entry`]);
     }).catch(error => console.log(error));

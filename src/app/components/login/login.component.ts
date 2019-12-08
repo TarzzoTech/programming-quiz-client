@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
     if (this.nameFormControl.status === 'VALID') {
       this.auth.setRole(Role.USER);
       this.auth.setName(this.nameFormControl.value);
-      this.router.navigate([`${DEFAULT_USER_ROUTE}languages`]);
+      this.router.navigate([`${DEFAULT_USER_ROUTE}topics`]);
     }
   }
 

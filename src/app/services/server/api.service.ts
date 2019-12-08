@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {  Question, QuizEntry } from '../../models';
 import { HttpClient } from '@angular/common/http';
 
-// const API_URL = 'http://localhost:3000/';
-const API_URL = 'https://p-q.herokuapp.com/';
+const API_URL = 'http://localhost:3000/';
+// const API_URL = 'https://p-q.herokuapp.com/';
 
 @Injectable({
   providedIn: 'root'
@@ -43,13 +43,13 @@ export class ApiService {
 
   // APIs related to Questions
 
-  // get all languages
-  getLanguagesCollection() {
-    return this.http.get(`${API_URL}languages`).toPromise();
+  // get all topics
+  getTopicsCollection() {
+    return this.http.get(`${API_URL}topics`).toPromise();
   }
 
-  getAvailableLanguages() {
-    return this.http.get(`${API_URL}languages/available-languages`).toPromise();
+  getAvailableTopics() {
+    return this.http.get(`${API_URL}topics/available-topics`).toPromise();
   }
 
   // get all questions
@@ -62,9 +62,9 @@ export class ApiService {
     return this.http.get(`${API_URL}questions/${questionId}`).toPromise();
   }
 
-  // get the list of questions by language
-  getQuestionsByLanguage(languageId: string) {
-    return this.http.get(`${API_URL}questions/quiz-questions/${languageId}`).toPromise();
+  // get the list of questions by topic
+  getQuestionsByTopic(topicsId: string) {
+    return this.http.get(`${API_URL}questions/quiz-questions/${topicsId}`).toPromise();
   }
 
   // insert question
@@ -82,17 +82,17 @@ export class ApiService {
     return this.http.delete(`${API_URL}questions/${questionId}`).toPromise();
   }
 
-  // delete entire language
-  deleteRecord(languageId: string) {
-    return this.http.delete(`${API_URL}languages/${languageId}`).toPromise();
+  // delete entire topic
+  deleteRecord(topicsId: string) {
+    return this.http.delete(`${API_URL}topics/${topicsId}`).toPromise();
   }
 
-  // get the list of questions by language
+  // get the list of questions by topic
   getSettings() {
     return this.http.get(`${API_URL}settings`).toPromise();
   }
 
-  // get the list of questions by language
+  // get the list of questions by topic
   getQuizInstructions() {
     return this.http.get(`${API_URL}instructions/quiz-instructions`).toPromise();
   }

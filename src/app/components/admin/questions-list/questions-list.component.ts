@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Question, Language, Topic } from 'src/app/models';
+import { Question, TopicItem, Topic } from 'src/app/models';
 import { ApiService, DataService } from 'src/app/services';
 import { Router } from '@angular/router';
 import { dataReStructure, DEFAULT_ADMIN_ROUTE } from 'src/app/Utility';
@@ -11,11 +11,11 @@ import { dataReStructure, DEFAULT_ADMIN_ROUTE } from 'src/app/Utility';
 })
 export class QuestionsListComponent implements OnInit {
 
-  languagesQuestions: Language[] = [];
+  topicsQuestions: TopicItem[] = [];
   allQuestions: Question[] = [];
-  languagesList: Topic[] = [];
-  selectedLanguage = '';
-  selectedLanguageQuestions: Question[] = [];
+  topicsList: Topic[] = [];
+  selectedTopic = '';
+  selectedTopicQuestions: Question[] = [];
 
   constructor(
     private api: ApiService,
@@ -28,11 +28,11 @@ export class QuestionsListComponent implements OnInit {
   }
 
   init() {
-    this.languagesList = this.data.getLanguagesCollection();
-    if (this.languagesList && this.languagesList.length === 0) {
-      this.api.getLanguagesCollection().then((languagesCollection: Topic[]) => {
-        this.data.setLanguagesCollection(languagesCollection);
-        this.languagesList = languagesCollection;
+    this.topicsList = this.data.getTopicsCollection();
+    if (this.topicsList && this.topicsList.length === 0) {
+      this.api.getTopicsCollection().then((topicsCollection: Topic[]) => {
+        this.data.setTopicsCollection(topicsCollection);
+        this.topicsList = topicsCollection;
         this.getQuestion();
       }).catch(error => console.log(error));
     } else {
@@ -44,18 +44,18 @@ export class QuestionsListComponent implements OnInit {
     this.api.getAllQuestions().then((questionsList: Question[]) => {
       if (questionsList && questionsList.length > 0) {
         this.allQuestions = questionsList;
-        this.languagesQuestions = dataReStructure(
+        this.topicsQuestions = dataReStructure(
           questionsList,
-          this.languagesList
+          this.topicsList
         );
-        this.onLanguageSelect(this.languagesQuestions[0]);
+        this.onTopicSelect(this.topicsQuestions[0]);
       }
     }).catch(error => console.log(error));
   }
 
-  onLanguageSelect(language: Language) {
-    this.selectedLanguage = language.Id;
-    this.selectedLanguageQuestions = language.Questions;
+  onTopicSelect(topic: TopicItem) {
+    this.selectedTopic = topic.Id;
+    this.selectedTopicQuestions = topic.Questions;
   }
 
   onEditQuestion(questionId: string) {

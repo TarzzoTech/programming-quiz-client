@@ -8,13 +8,13 @@ import { QuizService } from 'src/app/services';
 })
 export class EndComponent implements OnInit {
 
-  selectedLanguage: string;
+  selectedTopic: string;
 
   @Input() scorecard: string;
   constructor(private quiz: QuizService) { }
 
   ngOnInit() {
-    this.selectedLanguage = this.quiz.getLanguageName();
+    this.selectedTopic = this.quiz.getTopicName();
    }
 
 }

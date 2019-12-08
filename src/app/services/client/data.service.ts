@@ -9,9 +9,9 @@ export class DataService {
 
   // date wise score details storage
   private DashboardData: Dashboard = {} as Dashboard;
-  // list of languages storage
-  private LanguagesList: Topic[] = [];
-  // file data entry list of language based questions storage
+  // list of topics storage
+  private TopicsList: Topic[] = [];
+  // file data entry list of topic based questions storage
   private QuizData: DataEntry[] = [];
   // subscribe on question edit click
   onEditQuestion: BehaviorSubject<string> = new BehaviorSubject<string>('');
@@ -27,13 +27,13 @@ export class DataService {
     return JSON.parse(JSON.stringify(this.DashboardData));
   }
 
-  // set list of languages on data entry page load
-  setLanguagesCollection(languagesList: Topic[]): void {
-    this.LanguagesList = languagesList;
+  // set list of topics on data entry page load
+  setTopicsCollection(topicsList: Topic[]): void {
+    this.TopicsList = topicsList;
   }
 
-  getLanguagesCollection(): Topic[] {
-    return this.LanguagesList.slice(0);
+  getTopicsCollection(): Topic[] {
+    return this.TopicsList.slice(0);
   }
 
   // file data entry business/functions --> currently not in use but implemented
@@ -47,33 +47,33 @@ export class DataService {
   private dataReStructure(dataList: any[] = []): DataEntry[] {
     const dataEntry: DataEntry[] = [];
     if (dataList.length > 0) {
-      const languagesList: string[] = this.getLanguagesList(dataList);
-      languagesList.forEach(language => {
+      const topicsList: string[] = this.getTopicsList(dataList);
+      topicsList.forEach(topic => {
         const entry: DataEntry = {} as DataEntry;
-        entry.Title = language;
-        entry.Questions = this.buildQuestionsList(dataList, language);
+        entry.Title = topic;
+        entry.Questions = this.buildQuestionsList(dataList, topic);
         dataEntry.push(entry);
       });
     }
     return dataEntry;
   }
 
-  private getLanguagesList(list: any[] = []): string[] {
-    const languagesList: string[] = [];
+  private getTopicsList(list: any[] = []): string[] {
+    const topicsList: string[] = [];
     if (list.length > 0) {
       list.forEach(l => {
-        if (!languagesList.includes(l.Language)) {
-          languagesList.push(l.Language);
+        if (!topicsList.includes(l.Topic)) {
+          topicsList.push(l.Topic);
         }
       });
     }
-    return languagesList;
+    return topicsList;
   }
 
-  private buildQuestionsList(dataList: any[] = [], language: string): Question[] {
+  private buildQuestionsList(dataList: any[] = [], topic: string): Question[] {
    const questions: Question[] = [];
-   if (dataList.length > 0 && language) {
-    const data = dataList.filter(d => d.Language === language);
+   if (dataList.length > 0 && topic) {
+    const data = dataList.filter(d => d.Topic === topic);
     if (data.length > 0) {
       data.forEach(d => {
         const question: Question = {} as Question;

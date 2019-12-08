@@ -5,23 +5,23 @@ import { Router } from '@angular/router';
 import { DEFAULT_USER_ROUTE } from 'src/app/Utility';
 
 @Component({
-  selector: 'app-language-selection',
-  templateUrl: './language-selection.component.html',
-  styleUrls: ['./language-selection.component.scss']
+  selector: 'app-topic-selection',
+  templateUrl: './topic-selection.component.html',
+  styleUrls: ['./topic-selection.component.scss']
 })
-export class LanguageSelectionComponent implements OnInit {
+export class TopicSelectionComponent implements OnInit {
 
-  selectedLanguage: string;
-  availableLanguages: Topic[] = [];
+  selectedTopic: string;
+  availableTopics: Topic[] = [];
 
   constructor(
     private router: Router,
     private quiz: QuizService,
     private api: ApiService
   ) {
-    this.api.getAvailableLanguages().then((availableLanguages: Topic[]) => {
-      this.availableLanguages = availableLanguages;
-      this.quiz.setAvailableLanguages(availableLanguages);
+    this.api.getAvailableTopics().then((availableTopics: Topic[]) => {
+      this.availableTopics = availableTopics;
+      this.quiz.setAvailableTopics(availableTopics);
     }).catch(error => console.log(error));
   }
 
@@ -29,12 +29,12 @@ export class LanguageSelectionComponent implements OnInit {
   }
 
   onChange($event) {
-    this.quiz.setLanguage($event);
-    this.selectedLanguage = $event;
+    this.quiz.setTopic($event);
+    this.selectedTopic = $event;
   }
 
   onContinue() {
-    this.api.getQuestionsByLanguage(this.selectedLanguage).then((questionsList: Question[]) => {
+    this.api.getQuestionsByTopic(this.selectedTopic).then((questionsList: Question[]) => {
       this.quiz.setQuestions(questionsList);
       this.router.navigate([`${DEFAULT_USER_ROUTE}quiz`]);
     }).catch(error => console.log(error));

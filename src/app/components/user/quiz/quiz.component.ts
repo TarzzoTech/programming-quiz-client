@@ -62,11 +62,11 @@ export class QuizComponent implements OnInit {
   submitQuiz(): void {
     this.showSubmitBtn = false;
     const questions = this.quiz.getQuestions();
-    const SelectedLanguage = this.quiz.getSelectedLanguage();
+    const SelectedTopic = this.quiz.getSelectedTopic();
     const userDetails = this.auth.getUserDetails();
     const quizEntry: QuizEntry = {
       ...userDetails,
-      SelectedLanguage,
+      SelectedTopic,
       QuestionEntry: questionsEntry(questions)
     };
     this.api.insertUserQuiz(quizEntry).then((score: string) => {

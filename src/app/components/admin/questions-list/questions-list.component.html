@@ -4,12 +4,12 @@
             <h3 mat-subheader>Topics Available</h3>
             <ul class="list-group">
                 <li class="list-group-item cursor-pointer d-flex"
-                    [ngClass]="{'active': selectedLanguage === language.Id}"
-                    *ngFor="let language of languagesQuestions"
-                    (click)="onLanguageSelect(language)"
+                    [ngClass]="{'active': selectedTopic === topic.Id}"
+                    *ngFor="let topic of topicsQuestions"
+                    (click)="onTopicSelect(topic)"
                 >
                     <div><mat-icon mat-list-icon>folder</mat-icon></div>
-                    <div><h4 mat-line class="text-truncate topics-list-item-title">{{language.Title}}</h4></div>
+                    <div><h4 mat-line class="text-truncate topics-list-item-title">{{topic.Title}}</h4></div>
                 </li>
             </ul>
           </mat-list>
@@ -18,7 +18,7 @@
         <mat-list class="w-100">
             <h3 mat-subheader class="pl-0">Questions</h3>
             <ul class="list-group">
-                <li class="list-group-item cursor-pointer d-flex" *ngFor="let question of selectedLanguageQuestions">
+                <li class="list-group-item cursor-pointer d-flex" *ngFor="let question of selectedTopicQuestions">
                     <div><mat-icon mat-list-icon>question_answer</mat-icon></div>
                     <div class="d-flex custom-width justify-content-between">
                         <div class="custom-width">

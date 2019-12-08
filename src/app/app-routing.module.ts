@@ -8,7 +8,7 @@ import { QuizComponent } from './components/user/quiz/quiz.component';
 import { NoRouteComponent } from './components/no-route/no-route.component';
 import { DataEntryComponent } from './components/admin/data-entry/data-entry.component';
 import { TrashComponent } from './components/admin/trash/trash.component';
-import { LanguageSelectionComponent } from './components/user/language-selection/language-selection.component';
+import { TopicSelectionComponent } from './components/user/topic-selection/topic-selection.component';
 import { FileEntryComponent } from './components/admin/data-entry/file-entry/file-entry.component';
 import { FormEntryComponent } from './components/admin/data-entry/form-entry/form-entry.component';
 import { AuthGuardService as AuthGuard } from './services';
@@ -68,8 +68,8 @@ const routes: Routes = [
     component: UserComponent,
     children: [
       {
-        path: 'languages',
-        component: LanguageSelectionComponent
+        path: 'topics',
+        component: TopicSelectionComponent
       },
       {
         path: 'quiz',

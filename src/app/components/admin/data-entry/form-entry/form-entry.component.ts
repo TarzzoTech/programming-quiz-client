@@ -16,7 +16,7 @@ import { DEFAULT_ADMIN_ROUTE } from 'src/app/Utility';
 export class FormEntryComponent implements OnInit, OnDestroy {
 
   questionEntryForm: FormGroup;
-  languagesList: Topic[] = [];
+  topicsList: Topic[] = [];
   questionsEntry: QuestionsEntryBuilder;
   questionId = '';
   editId = '';
@@ -35,7 +35,7 @@ export class FormEntryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.languagesList = this.data.getLanguagesCollection();
+    this.topicsList = this.data.getTopicsCollection();
     if (this.editId) {
       this.actionLabel = 'Update';
       this.api.getQuestion(this.editId).then((question: Question) => {
@@ -61,27 +61,27 @@ export class FormEntryComponent implements OnInit, OnDestroy {
   }
 
   initializeAutoComplete() {
-    this.filteredOptions = this.questionEntryForm.controls.LanguageId.valueChanges
+    this.filteredOptions = this.questionEntryForm.controls.TopicId.valueChanges
       .pipe(
         startWith(''),
         map((value: any) => typeof value === 'string' ? value : value.name),
-        map((name: string) => name ? this._filter(name) : this.languagesList.slice())
+        map((name: string) => name ? this._filter(name) : this.topicsList.slice())
       );
   }
 
   displayFn = (langCode?: string): string | undefined => {
-    const language = this.languagesList.find(lang => lang.Code === langCode);
-    return language ? language.Name : undefined;
+    const topic = this.topicsList.find(lang => lang.Code === langCode);
+    return topic ? topic.Name : undefined;
   }
 
   private _filter(name: string): Topic[] {
     const filterValue = name.toLowerCase();
-    return this.languagesList.filter(option => option.Name.toLowerCase().indexOf(filterValue) === 0);
+    return this.topicsList.filter(option => option.Name.toLowerCase().indexOf(filterValue) === 0);
   }
 
   createForm(questionsEntry: QuestionsEntry) {
     this.questionEntryForm = new FormGroup({
-      LanguageId: new FormControl(questionsEntry.LanguageId, {
+      TopicId: new FormControl(questionsEntry.TopicId, {
         validators: [
           Validators.required
         ]

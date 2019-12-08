@@ -40,7 +40,7 @@ import { SettingsComponent } from './components/admin/settings/settings.componen
 import { QuestionsComponent } from './components/user/quiz/questions/questions.component';
 import { EndComponent } from './components/user/quiz/end/end.component';
 import { InstructionsComponent } from './components/user/quiz/instructions/instructions.component';
-import { LanguageSelectionComponent } from './components/user/language-selection/language-selection.component';
+import { TopicSelectionComponent } from './components/user/topic-selection/topic-selection.component';
 import { UserComponent } from './components/user/user.component';
 import { QuestionAnswersComponent } from './components/user/quiz/question-answers/question-answers.component';
 
@@ -60,7 +60,7 @@ import { AuthGuardService, DataService, AuthService, QuizService, ApiService, Se
     NoRouteComponent,
     DataEntryComponent,
     TrashComponent,
-    LanguageSelectionComponent,
+    TopicSelectionComponent,
     FileEntryComponent,
     FormEntryComponent,
     AdminComponent,

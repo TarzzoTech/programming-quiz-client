@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  Question, QuizEntry } from '../../models';
+import {  Question, QuizEntry, Topic } from '../../models';
 import { HttpClient } from '@angular/common/http';
 
 const API_URL = 'http://localhost:3000/';
@@ -46,6 +46,11 @@ export class ApiService {
   // get all topics
   getTopicsCollection() {
     return this.http.get(`${API_URL}topics`).toPromise();
+  }
+
+  // add new topic
+  addTopic(topic: Topic) {
+    return this.http.post(`${API_URL}topics/add-topics`, topic).toPromise();
   }
 
   getAvailableTopics() {

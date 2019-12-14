@@ -1,1 +1,24 @@
-<h3>Coming Soon...</h3>
+<div class="m-5 multi-settings-block">
+    <div class="topics-entry-block">
+        <button mat-raised-button (click)="openDialog()">Topics</button>
+        <div class="entry-block mt-3">
+            <mat-form-field class="pr-4">
+                <input matInput placeholder="Topic Name" [(ngModel)]="topicName" />
+            </mat-form-field>
+            <mat-form-field class="px-4">
+                <input matInput placeholder="Topic Code (Unique)" [(ngModel)]="topicCode" />
+            </mat-form-field>
+            <button mat-raised-button (click)="addTopic()"
+                [disabled]='!(topicCode && topicName)'
+                color="primary"
+            >
+                Add Topic
+            </button>
+            <div class="error-msg">{{topicCodeError}}</div>
+        </div>
+    </div>
+    <!-- <hr />
+    <div class="settings-entry-block"></div>
+    <hr />
+    <div class="instruction-entry-block"></div> -->
+</div>

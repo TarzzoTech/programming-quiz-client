@@ -1,4 +1,4 @@
-<mat-drawer-container class="questions-list-drawer-container">
+<mat-drawer-container class="questions-list-drawer-container" *ngIf="allQuestions.length > 0;else noRecord">
     <mat-drawer class="topics-drawer" #drawer [mode]="'side'" opened>
         <mat-list>
             <h3 mat-subheader>Topics Available</h3>
@@ -26,10 +26,18 @@
                                 {{question.Title}}
                             </h4>
                         </div>
-                        <div><mat-icon mat-list-icon (click)="onEditQuestion(question.Id)">edit</mat-icon></div>
+                        <div>
+                            <mat-icon title="delete" mat-list-icon (click)="onDeleteQuestion(question.Id)">delete</mat-icon>
+                            <mat-icon title="edit" mat-list-icon (click)="onEditQuestion(question.Id)">edit</mat-icon>
+                        </div>
                     </div>
                 </li>
             </ul>
         </mat-list>
     </mat-drawer-content>
 </mat-drawer-container>
+<ng-template #noRecord>
+    <div class="w-100 h-100 d-flex no-record">
+        No Topics Available
+    </div>
+</ng-template>

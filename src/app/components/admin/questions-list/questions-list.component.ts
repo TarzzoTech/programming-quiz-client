@@ -62,4 +62,19 @@ export class QuestionsListComponent implements OnInit {
     this.data.onEditQuestion.next(questionId);
     this.router.navigate([`${DEFAULT_ADMIN_ROUTE}data-entry/edit`]);
   }
+
+  onDeleteQuestion(questionId: string) {
+    this.api.deleteQuestion(questionId).then(() => {
+      this.allQuestions = this.allQuestions.filter(q => q.Id !== questionId);
+      this.selectedTopicQuestions = this.selectedTopicQuestions.filter(q => q.Id !== questionId);
+      this.topicsQuestions = this.topicsQuestions.map(topic => {
+        if (this.selectedTopic === topic.Id) {
+          topic.Questions = topic.Questions.filter(q => q.Id !== questionId);
+        }
+        return topic;
+      });
+    }).catch(err => {
+      console.log(err);
+    });
+  }
 }

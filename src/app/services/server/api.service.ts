@@ -82,7 +82,17 @@ export class ApiService {
     return this.http.delete(`${API_URL}questions/${questionId}`).toPromise();
   }
 
-  // delete entire topic
+   // undo delete question
+   undoQuestion(questionId: string) {
+    return this.http.put(`${API_URL}questions/undo/${questionId}`, {}).toPromise();
+  }
+
+  // get deleted questions
+  getTrashQuestions() {
+    return this.http.get(`${API_URL}questions/deleted-questions`).toPromise();
+  }
+
+  // delete entire question in topic
   deleteRecord(topicsId: string) {
     return this.http.delete(`${API_URL}topics/${topicsId}`).toPromise();
   }

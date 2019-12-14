@@ -1,1 +1,42 @@
-<h3>Coming Soon...</h3>
+<mat-drawer-container class="questions-list-drawer-container" *ngIf="allQuestions.length > 0;else noRecord">
+    <mat-drawer class="topics-drawer" #drawer [mode]="'side'" opened>
+        <mat-list>
+            <h3 mat-subheader>Topics Trashed</h3>
+            <ul class="list-group">
+                <li class="list-group-item cursor-pointer d-flex"
+                    [ngClass]="{'active': selectedTopic === topic.Id}"
+                    *ngFor="let topic of topicsQuestions"
+                    (click)="onTopicSelect(topic)"
+                >
+                    <div><mat-icon mat-list-icon>folder</mat-icon></div>
+                    <div><h4 mat-line class="text-truncate topics-list-item-title">{{topic.Title}}</h4></div>
+                </li>
+            </ul>
+          </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <mat-list class="w-100">
+            <h3 mat-subheader class="pl-0">Questions</h3>
+            <ul class="list-group">
+                <li class="list-group-item cursor-pointer d-flex" *ngFor="let question of selectedTopicQuestions">
+                    <div><mat-icon mat-list-icon>question_answer</mat-icon></div>
+                    <div class="d-flex custom-width justify-content-between">
+                        <div class="custom-width">
+                            <h4 mat-line class="text-truncate questions-list-item-title" [title]="question.Title">
+                                {{question.Title}}
+                            </h4>
+                        </div>
+                        <div>
+                            <mat-icon title="undo" mat-list-icon (click)="onUndoQuestion(question.Id)">restore</mat-icon>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </mat-list>
+    </mat-drawer-content>
+</mat-drawer-container>
+<ng-template #noRecord>
+    <div class="w-100 h-100 d-flex no-record">
+        No Topics Available
+    </div>
+</ng-template>

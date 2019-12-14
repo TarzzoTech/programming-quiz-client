@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services';
+import { Instruction } from 'src/app/models';
 
 @Component({
   selector: 'app-instructions',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstructionsComponent implements OnInit {
 
-  constructor() { }
+  instructionCMS = '';
+
+  constructor(
+    private api: ApiService
+  ) { }
 
   ngOnInit() {
+    this.api.getQuizInstructions().then((instructions: Instruction) => {
+      const quizInstructionDiv = document.getElementById('quiz-instruction');
+      quizInstructionDiv.innerHTML = instructions.CMS;
+    });
   }
 
 }

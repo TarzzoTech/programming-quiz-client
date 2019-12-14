@@ -2,8 +2,8 @@
     <h3 class="selection-title">Select topic to proceed</h3>
     <mat-radio-group aria-labelledby="example-radio-group-label" class="material-radio-group"
         [ngModel]="selectedTopic" (ngModelChange)="onChange($event)">
-        <mat-radio-button *ngFor="let lang of availableTopics" [value]="lang.Code" class="material-radio-button">
-            {{lang.Name}}
+        <mat-radio-button *ngFor="let topic of availableTopics" [value]="topic.Code" class="material-radio-button">
+            {{topic.Name}}
         </mat-radio-button>
     </mat-radio-group>
     <div class="action-buttons">

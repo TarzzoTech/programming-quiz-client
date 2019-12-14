@@ -28,7 +28,7 @@
         <input matInput placeholder="Question" formControlName='Title' required />
       </mat-form-field>
       <mat-form-field>
-        <textarea matInput placeholder="Question Description" formControlName='Description' required></textarea>
+        <textarea matInput placeholder="Question Description (optional)" formControlName='Description'></textarea>
       </mat-form-field>
       <div class="question-options-block d-flex flex-row w-100 justify-content-between mr-5">
         <mat-form-field class="options-width">
@@ -46,8 +46,13 @@
           <input matInput placeholder="Option D (optional)" formControlName='OptionD' />
         </mat-form-field>
       </div>
-      <mat-form-field>
-        <input matInput placeholder="Answer" formControlName='Answer' required />
+      <mat-form-field class="answer-field">
+        <mat-select placeholder="Answer" formControlName='Answer' required >
+          <mat-option *ngFor="let option of OptionsList" [value]="option.value">
+            {{option.label}}
+          </mat-option>
+        </mat-select>
+        <!-- <input matInput placeholder="Answer" formControlName='Answer' required /> -->
       </mat-form-field>
     </form>
   </div>

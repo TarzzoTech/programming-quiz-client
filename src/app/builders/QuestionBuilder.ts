@@ -19,7 +19,7 @@ export class QuestionBuilder {
   constructor(questionsEntry: QuestionsEntry) {
     this.question.TopicId = questionsEntry.TopicId;
     this.question.Title = questionsEntry.Title;
-    this.question.Answer = questionsEntry.Answer;
+    this.question.Answer = questionsEntry[questionsEntry.Answer];
     this.question.Description = questionsEntry.Description;
     this.question.Options.A = questionsEntry.OptionA;
     this.question.Options.B = questionsEntry.OptionB;

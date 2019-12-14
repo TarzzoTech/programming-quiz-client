@@ -6,7 +6,7 @@ import { QuestionsEntryBuilder, QuestionBuilder } from 'src/app/builders';
 import {Observable, Subscription} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { DataService, ApiService } from 'src/app/services';
-import { DEFAULT_ADMIN_ROUTE } from 'src/app/Utility';
+import { DEFAULT_ADMIN_ROUTE, getKeyByValue } from 'src/app/Utility';
 
 @Component({
   selector: 'app-form-entry',
@@ -23,6 +23,12 @@ export class FormEntryComponent implements OnInit, OnDestroy {
   actionLabel = 'Add';
   filteredOptions: Observable<Topic[]>;
   editQuestionSubscription: Subscription;
+  OptionsList = [
+    { label: 'Option A', value: 'OptionA' },
+    { label: 'Option B', value: 'OptionB' },
+    { label: 'Option C', value: 'OptionC' },
+    { label: 'Option D', value: 'OptionD' },
+  ];
 
   constructor(
     private router: Router,
@@ -96,11 +102,7 @@ export class FormEntryComponent implements OnInit, OnDestroy {
           Validators.required
         ]
       }),
-      Description: new FormControl(questionsEntry.Description, {
-        validators: [
-          Validators.required
-        ]
-      }),
+      Description: new FormControl(questionsEntry.Description),
       OptionA: new FormControl(questionsEntry.OptionA, {
         validators: [
           Validators.required
@@ -113,7 +115,7 @@ export class FormEntryComponent implements OnInit, OnDestroy {
       }),
       OptionC: new FormControl(questionsEntry.OptionC),
       OptionD: new FormControl(questionsEntry.OptionD),
-      Answer: new FormControl(questionsEntry.Answer, {
+      Answer: new FormControl(getKeyByValue(questionsEntry, questionsEntry.Answer) || '', {
         validators: [
           Validators.required
         ]

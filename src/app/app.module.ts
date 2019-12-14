@@ -15,6 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 
 // Internal module
 import { AppRoutingModule } from './app-routing.module';
@@ -85,7 +86,8 @@ import { AuthGuardService, DataService, AuthService, QuizService, ApiService, Se
     MatExpansionModule,
     MatTableModule,
     MatAutocompleteModule,
-    MatListModule
+    MatListModule,
+    MatSelectModule
   ],
   providers: [
     AuthService,

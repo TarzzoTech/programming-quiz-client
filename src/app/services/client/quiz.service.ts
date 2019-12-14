@@ -60,7 +60,7 @@ export class QuizService {
 
   updateSelectedAnswers(answer: SelectedAnswers): void {
     this.Questions = this.Questions.map(sa => {
-      if (sa._id === answer.Id) {
+      if (sa.Id === answer.Id) {
         sa.SelectedAnswers = answer.Answer;
       }
       return sa;

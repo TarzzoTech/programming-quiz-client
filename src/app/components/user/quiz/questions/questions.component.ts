@@ -30,7 +30,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       this.questionOptions = [];
       if (this.question) {
         Object.keys(this.question.Options).forEach(qKey => {
-          if (this.question.Options[qKey] && qKey !== '_id') {
+          if (this.question.Options[qKey] && qKey !== 'Id') {
             this.questionOptions.push(qKey);
           }
         });
@@ -41,7 +41,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
 
   onChange($event): void {
     this.selectedOption = $event;
-    const Id = this.question._id;
+    const Id = this.question.Id;
     this.onSelect.emit({
       Id,
       Answer: $event

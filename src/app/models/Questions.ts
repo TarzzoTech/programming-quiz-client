@@ -1,6 +1,6 @@
 export interface Question {
-  _id?: string;
-  LanguageId: string;
+  Id?: string;
+  TopicId: string;
   Title: string;
   Description: string;
   Options: QuestionOption;
@@ -10,7 +10,7 @@ export interface Question {
   IsActive: boolean;
 }
 
-export interface Language {
+export interface TopicItem {
   Id: string;
   Title: string;
   Questions: Question[];
@@ -34,7 +34,7 @@ export interface SelectedAnswers {
 }
 
 export interface QuestionsEntry {
-  LanguageId: string;
+  TopicId: string;
   Title: string;
   Description: string;
   OptionA: string;

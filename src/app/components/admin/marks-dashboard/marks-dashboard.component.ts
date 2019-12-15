@@ -23,7 +23,7 @@ export class MarksDashboardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-      this.topicsList = this.data.getLanguagesCollection();
+      this.topicsList = this.data.getTopicsCollection();
       this.api.getQuizDataCollection().then(response => {
         if (response) {
           this.data.setDashboardData(response);
@@ -31,7 +31,9 @@ export class MarksDashboardComponent implements OnInit {
             if (!res.TopicId) {
               res.TopicId = 'JavaScript';
             } else {
-              res.TopicId = this.topicsList.find(t => t.Code === res.TopicId).Name;
+              if (this.topicsList.find(t => t.Code === res.TopicId)) {
+                res.TopicId = this.topicsList.find(t => t.Code === res.TopicId).Name;
+              }
             }
             return res;
           });

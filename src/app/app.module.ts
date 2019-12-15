@@ -15,6 +15,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 // Internal module
 import { AppRoutingModule } from './app-routing.module';
@@ -35,12 +38,13 @@ import { FileEntryComponent } from './components/admin/data-entry/file-entry/fil
 import { FormEntryComponent } from './components/admin/data-entry/form-entry/form-entry.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { SettingsComponent } from './components/admin/settings/settings.component';
+import { TopicsModalComponent } from './components/admin/settings/topics-modal/topics-modal.component';
 
 // User components
 import { QuestionsComponent } from './components/user/quiz/questions/questions.component';
 import { EndComponent } from './components/user/quiz/end/end.component';
 import { InstructionsComponent } from './components/user/quiz/instructions/instructions.component';
-import { LanguageSelectionComponent } from './components/user/language-selection/language-selection.component';
+import { TopicSelectionComponent } from './components/user/topic-selection/topic-selection.component';
 import { UserComponent } from './components/user/user.component';
 import { QuestionAnswersComponent } from './components/user/quiz/question-answers/question-answers.component';
 
@@ -60,14 +64,15 @@ import { AuthGuardService, DataService, AuthService, QuizService, ApiService, Se
     NoRouteComponent,
     DataEntryComponent,
     TrashComponent,
-    LanguageSelectionComponent,
+    TopicSelectionComponent,
     FileEntryComponent,
     FormEntryComponent,
     AdminComponent,
     UserComponent,
     SettingsComponent,
     LayoutComponent,
-    QuestionAnswersComponent
+    QuestionAnswersComponent,
+    TopicsModalComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +90,10 @@ import { AuthGuardService, DataService, AuthService, QuizService, ApiService, Se
     MatExpansionModule,
     MatTableModule,
     MatAutocompleteModule,
-    MatListModule
+    MatListModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatSlideToggleModule
   ],
   providers: [
     AuthService,
@@ -95,6 +103,7 @@ import { AuthGuardService, DataService, AuthService, QuizService, ApiService, Se
     AuthGuardService,
     SettingsService
   ],
+  entryComponents: [TopicsModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

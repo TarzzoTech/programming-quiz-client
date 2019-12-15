@@ -11,7 +11,7 @@ export class EmptyQuestionBuilder {
       D: ''
     },
     Answer: '',
-    LanguageId: '',
+    TopicId: '',
     Score: 0,
     SelectedAnswers: '',
     IsActive: true

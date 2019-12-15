@@ -8,9 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:prod": "npm build --prod",
-    "set-path": "ng build --prod --base-href 'https://vjd7.github.io/programming-quiz-client/'",
-    "publish": "npm run set-path && ngh"
+    "build:prod": "ng build --prod",
+    "set-path": "ng build --prod --base-href https://vjd7.github.io/programming-quiz-client/",
+    "publish": "npm run set-path && ./node_modules/.bin/ngh --dir=dist/client"
   },
   "private": true,
   "dependencies": {

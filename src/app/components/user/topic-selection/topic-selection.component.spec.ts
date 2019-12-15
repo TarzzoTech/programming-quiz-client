@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LanguageSelectionComponent } from './language-selection.component';
+import { TopicSelectionComponent } from './topic-selection.component';
 
-describe('LanguageSelectionComponent', () => {
-  let component: LanguageSelectionComponent;
-  let fixture: ComponentFixture<LanguageSelectionComponent>;
+describe('TopicSelectionComponent', () => {
+  let component: TopicSelectionComponent;
+  let fixture: ComponentFixture<TopicSelectionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LanguageSelectionComponent ]
+      declarations: [ TopicSelectionComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LanguageSelectionComponent);
+    fixture = TestBed.createComponent(TopicSelectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -11,7 +11,7 @@
     <mat-drawer-content>
         <ng-container *ngIf="viewMode === QuesViewMode.INSTRUCTIONS">
             <app-instructions></app-instructions>
-            <button mat-raised-button color="primary" (click)="drawer.toggle(); startQuiz()">Start your Quiz</button>
+            <button mat-raised-button class="mt-2" color="primary" (click)="drawer.toggle(); startQuiz()">Start your Quiz</button>
         </ng-container>
         <ng-container *ngIf="viewMode === QuesViewMode.QUESTIONS">
             <app-questions (onSelect)="onSelect($event)"></app-questions>

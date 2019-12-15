@@ -1,7 +1,7 @@
 import { QuestionsEntry, Question, DEFAULT_SCORE } from '../models';
 export class QuestionsEntryBuilder {
     questionsEntry: QuestionsEntry = {
-        LanguageId: '',
+        TopicId: '',
         Title: '',
         Description: '',
         OptionA: '',
@@ -13,7 +13,7 @@ export class QuestionsEntryBuilder {
     };
     constructor(defaultEntry?: Question | null) {
         if (defaultEntry) {
-            this.questionsEntry.LanguageId = defaultEntry.LanguageId;
+            this.questionsEntry.TopicId = defaultEntry.TopicId;
             this.questionsEntry.Answer = defaultEntry.Answer;
             this.questionsEntry.Description = defaultEntry.Description;
             this.questionsEntry.OptionA = defaultEntry.Options.A;

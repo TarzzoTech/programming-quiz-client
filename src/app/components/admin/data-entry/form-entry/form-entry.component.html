@@ -1,17 +1,17 @@
 <div class="form-data-entry p-3">
   <div class="insert-block mb-4">
-    <!-- <button mat-stroked-button color="primary" (click)="onInsertFile()">
+    <button mat-stroked-button color="primary" class="mr-3" (click)="onInsertFile()">
         Insert file
-    </button> -->
+    </button>
     <button mat-stroked-button color="primary" (click)="goQuestionsList()">
       Questions List
   </button>
   </div>
   <div class="form-data-entry-block m-5">
     <form class="question-entry-form d-flex flex-column" [formGroup]='questionEntryForm' (ngSubmit)='onSubmit()'>
-      <div class="language-score-block d-flex flex-row w-100 justify-content-between mr-5">
-        <mat-form-field class="language-input">
-          <input type="text" placeholder="Topics" matInput formControlName='LanguageId' [matAutocomplete]="auto"
+      <div class="topic-score-block d-flex flex-row w-100 justify-content-between mr-5">
+        <mat-form-field class="topic-input">
+          <input type="text" placeholder="Topics" matInput formControlName='TopicId' [matAutocomplete]="auto"
             required>
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             <mat-option *ngFor="let option of filteredOptions | async" [value]="option.Code">
@@ -28,7 +28,7 @@
         <input matInput placeholder="Question" formControlName='Title' required />
       </mat-form-field>
       <mat-form-field>
-        <textarea matInput placeholder="Question Description" formControlName='Description' required></textarea>
+        <textarea matInput placeholder="Question Description (optional)" formControlName='Description'></textarea>
       </mat-form-field>
       <div class="question-options-block d-flex flex-row w-100 justify-content-between mr-5">
         <mat-form-field class="options-width">
@@ -46,8 +46,13 @@
           <input matInput placeholder="Option D (optional)" formControlName='OptionD' />
         </mat-form-field>
       </div>
-      <mat-form-field>
-        <input matInput placeholder="Answer" formControlName='Answer' required />
+      <mat-form-field class="answer-field">
+        <mat-select placeholder="Answer" formControlName='Answer' required >
+          <mat-option *ngFor="let option of OptionsList" [value]="option.value">
+            {{option.label}}
+          </mat-option>
+        </mat-select>
+        <!-- <input matInput placeholder="Answer" formControlName='Answer' required /> -->
       </mat-form-field>
     </form>
   </div>

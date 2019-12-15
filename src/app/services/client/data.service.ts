@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Dashboard, Question, Topic, DataEntry } from '../../models';
+import { Dashboard, Question, Topic, DataEntry, QuestionsEntry, DEFAULT_SCORE } from '../../models';
 import { BehaviorSubject } from 'rxjs';
+import { QuestionBuilder } from 'src/app/builders';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,9 @@ export class DataService {
 
   // date wise score details storage
   private DashboardData: Dashboard = {} as Dashboard;
-  // list of languages storage
-  private LanguagesList: Topic[] = [];
-  // file data entry list of language based questions storage
+  // list of topics storage
+  private TopicsList: Topic[] = [];
+  // file data entry list of topic based questions storage
   private QuizData: DataEntry[] = [];
   // subscribe on question edit click
   onEditQuestion: BehaviorSubject<string> = new BehaviorSubject<string>('');
@@ -27,53 +28,63 @@ export class DataService {
     return JSON.parse(JSON.stringify(this.DashboardData));
   }
 
-  // set list of languages on data entry page load
-  setLanguagesCollection(languagesList: Topic[]): void {
-    this.LanguagesList = languagesList;
+  // set list of topics on data entry page load
+  setTopicsCollection(topicsList: Topic[]): void {
+    this.TopicsList = topicsList;
   }
 
-  getLanguagesCollection(): Topic[] {
-    return this.LanguagesList.slice(0);
+  getTopicsCollection(): Topic[] {
+    return this.TopicsList.slice(0);
   }
 
   // file data entry business/functions --> currently not in use but implemented
   // validation for mandatory fields are pending
-  dataEntry(dataList: any[] = []): DataEntry[] {
+  dataEntry(dataList: QuestionsEntry[] = []): DataEntry[] {
     const res = this.dataReStructure(dataList);
     this.QuizData.push(...res);
     return this.QuizData.slice(0);
   }
 
-  private dataReStructure(dataList: any[] = []): DataEntry[] {
+  formatFileDataEntry(dataList: QuestionsEntry[] = []): Question[] {
+    const questionsList = [];
+    dataList.forEach(data => {
+      new QuestionBuilder(data).then(q => {
+        questionsList.push(q);
+      });
+    });
+    return questionsList;
+  }
+
+  private dataReStructure(dataList: QuestionsEntry[] = []): DataEntry[] {
     const dataEntry: DataEntry[] = [];
     if (dataList.length > 0) {
-      const languagesList: string[] = this.getLanguagesList(dataList);
-      languagesList.forEach(language => {
+      const topicsList: string[] = this.getTopicsList(dataList);
+      topicsList.forEach(TopicId => {
         const entry: DataEntry = {} as DataEntry;
-        entry.Title = language;
-        entry.Questions = this.buildQuestionsList(dataList, language);
+        entry.TopicId = TopicId;
+        entry.Questions = this.buildQuestionsList(dataList, TopicId);
         dataEntry.push(entry);
       });
     }
     return dataEntry;
   }
 
-  private getLanguagesList(list: any[] = []): string[] {
-    const languagesList: string[] = [];
+  private getTopicsList(list: QuestionsEntry[] = []): string[] {
+    const topicsList: string[] = [];
     if (list.length > 0) {
       list.forEach(l => {
-        if (!languagesList.includes(l.Language)) {
-          languagesList.push(l.Language);
+        if (!topicsList.includes(l.TopicId)) {
+          topicsList.push(l.TopicId);
         }
       });
     }
-    return languagesList;
+    return topicsList;
   }
 
-  private buildQuestionsList(dataList: any[] = [], language: string): Question[] {
+  private buildQuestionsList(dataList: QuestionsEntry[] = [], TopicId: string): Question[] {
    const questions: Question[] = [];
-   if (dataList.length > 0 && language) {
-    const data = dataList.filter(d => d.Language === language);
+   if (dataList.length > 0 && TopicId) {
+    const data = dataList.filter(d => d.TopicId === TopicId);
     if (data.length > 0) {
       data.forEach(d => {
         const question: Question = {} as Question;
@@ -85,8 +96,8 @@ export class DataService {
           C: d.OptionC,
           D: d.OptionD
         };
-        question.Score = d.Score || 5;
-        question.Title = d.Question;
+        question.Score = d.Score || DEFAULT_SCORE;
+        question.Title = d.Title;
         questions.push(question);
       });
     }

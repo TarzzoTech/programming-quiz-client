@@ -1,0 +1,16 @@
+<div class="topics-table">
+    <table class="table table-bordered" *ngIf="topicsList.length > 0">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Code</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let topic of topicsList">
+            <td scope="row">{{topic.Name}}</td>
+            <td>{{topic.Code}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  Question, QuizEntry } from '../../models';
+import {  Question, QuizEntry, Topic, Setting, Instruction, QuestionsEntry } from '../../models';
 import { HttpClient } from '@angular/common/http';
 
 // const API_URL = 'http://localhost:3000/';
@@ -43,13 +43,18 @@ export class ApiService {
 
   // APIs related to Questions
 
-  // get all languages
-  getLanguagesCollection() {
-    return this.http.get(`${API_URL}languages`).toPromise();
+  // get all topics
+  getTopicsCollection() {
+    return this.http.get(`${API_URL}topics`).toPromise();
   }
 
-  getAvailableLanguages() {
-    return this.http.get(`${API_URL}languages/available-languages`).toPromise();
+  // add new topic
+  addTopic(topic: Topic) {
+    return this.http.post(`${API_URL}topics/add-topics`, topic).toPromise();
+  }
+
+  getAvailableTopics() {
+    return this.http.get(`${API_URL}topics/available-topics`).toPromise();
   }
 
   // get all questions
@@ -62,14 +67,19 @@ export class ApiService {
     return this.http.get(`${API_URL}questions/${questionId}`).toPromise();
   }
 
-  // get the list of questions by language
-  getQuestionsByLanguage(languageId: string) {
-    return this.http.get(`${API_URL}questions/quiz-questions/${languageId}`).toPromise();
+  // get the list of questions by topic
+  getQuestionsByTopic(topicsId: string) {
+    return this.http.get(`${API_URL}questions/quiz-questions/${topicsId}`).toPromise();
   }
 
   // insert question
   insertQuestion(question: Question) {
     return this.http.post(`${API_URL}questions`, question).toPromise();
+  }
+
+  // insert bulk of questions
+  insertBulkQuestions(questionsList: Question[]) {
+    return this.http.post(`${API_URL}questions/bulk-insert`, questionsList).toPromise();
   }
 
   // update question
@@ -82,18 +92,38 @@ export class ApiService {
     return this.http.delete(`${API_URL}questions/${questionId}`).toPromise();
   }
 
-  // delete entire language
-  deleteRecord(languageId: string) {
-    return this.http.delete(`${API_URL}languages/${languageId}`).toPromise();
+   // undo delete question
+   undoQuestion(questionId: string) {
+    return this.http.put(`${API_URL}questions/undo/${questionId}`, {}).toPromise();
   }
 
-  // get the list of questions by language
+  // get deleted questions
+  getTrashQuestions() {
+    return this.http.get(`${API_URL}questions/deleted-questions`).toPromise();
+  }
+
+  // delete entire question in topic
+  deleteRecord(topicsId: string) {
+    return this.http.delete(`${API_URL}topics/${topicsId}`).toPromise();
+  }
+
+  // get the list of questions by topic
   getSettings() {
     return this.http.get(`${API_URL}settings`).toPromise();
   }
 
-  // get the list of questions by language
+  // updating the settings
+  updateSettings(settings: Setting) {
+    return this.http.put(`${API_URL}settings/add-or-update/${settings.Id}`, settings).toPromise();
+  }
+
+  // get the list of questions by topic
   getQuizInstructions() {
     return this.http.get(`${API_URL}instructions/quiz-instructions`).toPromise();
+  }
+
+  // updating the instruction content
+  updateInstruction(instructions: Instruction) {
+    return this.http.put(`${API_URL}instructions/add-or-update/${instructions.Id}`, instructions).toPromise();
   }
 }

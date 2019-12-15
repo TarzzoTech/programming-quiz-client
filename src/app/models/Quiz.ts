@@ -8,13 +8,13 @@ export enum QuesViewMode {
 export interface QuizEntry {
     Name: string;
     Email: string;
-    SelectedLanguage: string;
+    SelectedTopic: string;
     QuestionEntry: QuizQuestionEntry[];
 }
 
 export interface QuizQuestionEntry {
     Id: string;
-    SelectedAnswer: string;
+    SelectedAnswers: string;
 }
 
 export const DEFAULT_SCORE = 1;

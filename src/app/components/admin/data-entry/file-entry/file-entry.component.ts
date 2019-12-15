@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
-import { DataService } from 'src/app/services';
+import { DataService, ApiService } from 'src/app/services';
 import { Router } from '@angular/router';
 import { DEFAULT_ADMIN_ROUTE } from 'src/app/Utility';
+import { QuestionsEntry } from 'src/app/models';
 
 @Component({
   selector: 'app-file-entry',
@@ -13,15 +14,16 @@ export class FileEntryComponent implements OnInit {
 
   accept = '.xls,.xlsx';
   displayedColumns: string[] = [
-    'Topic', 'Question', 'Description', 'Answer', 'OptionA', 'OptionB', 'OptionC', 'OptionD', 'Score'
+    'TopicId', 'Title', 'Description', 'OptionA', 'OptionB', 'OptionC', 'OptionD', 'Answer', 'Score'
   ];
-  XLSX_JSON = [];
+  XLSX_JSON: QuestionsEntry[] = [];
   // tslint:disable-next-line: variable-name
   Refined_XLSX_JSON = [];
 
   constructor(
     private data: DataService,
-    private router: Router
+    private router: Router,
+    private api: ApiService
   ) { }
 
   ngOnInit() {
@@ -64,7 +66,11 @@ export class FileEntryComponent implements OnInit {
 
   onSubmit() {
     console.log(this.Refined_XLSX_JSON);
-    this.router.navigate([`${DEFAULT_ADMIN_ROUTE}questions-list`]);
+    this.api.insertBulkQuestions(this.data.formatFileDataEntry(this.XLSX_JSON)).then(isSucceeded => {
+      if (isSucceeded) {
+        this.router.navigate([`${DEFAULT_ADMIN_ROUTE}questions-list`]);
+      }
+    });
   }
 
   onBack() {

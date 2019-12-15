@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  Question, QuizEntry, Topic, Setting, Instruction } from '../../models';
+import {  Question, QuizEntry, Topic, Setting, Instruction, QuestionsEntry } from '../../models';
 import { HttpClient } from '@angular/common/http';
 
 const API_URL = 'http://localhost:3000/';
@@ -75,6 +75,11 @@ export class ApiService {
   // insert question
   insertQuestion(question: Question) {
     return this.http.post(`${API_URL}questions`, question).toPromise();
+  }
+
+  // insert bulk of questions
+  insertBulkQuestions(questionsList: Question[]) {
+    return this.http.post(`${API_URL}questions/bulk-insert`, questionsList).toPromise();
   }
 
   // update question

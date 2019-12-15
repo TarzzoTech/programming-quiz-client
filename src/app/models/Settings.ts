@@ -4,11 +4,15 @@ import { Topic } from './Questions';
 export interface ComplexityOption extends Topic {}
 
 export interface Setting {
+    Id: string;
     QuizQuestionsCount: number;
     IsRandom: boolean;
     ComplexityOptions: ComplexityOption;
+    CreatedDate: Date;
 }
 
 export interface Instruction {
+    Id: string;
     CMS: string;
+    CreatedDate: Date;
 }

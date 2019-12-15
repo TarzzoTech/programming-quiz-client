@@ -1,24 +1,57 @@
 <div class="m-5 multi-settings-block">
-    <div class="topics-entry-block">
+    <div class="mb-3 topics-entry-block">
         <button mat-raised-button (click)="openDialog()">Topics</button>
-        <div class="entry-block mt-3">
-            <mat-form-field class="pr-4">
-                <input matInput placeholder="Topic Name" [(ngModel)]="topicName" />
-            </mat-form-field>
-            <mat-form-field class="px-4">
-                <input matInput placeholder="Topic Code (Unique)" [(ngModel)]="topicCode" />
-            </mat-form-field>
-            <button mat-raised-button (click)="addTopic()"
-                [disabled]='!(topicCode && topicName)'
-                color="primary"
-            >
-                Add Topic
-            </button>
-            <div class="error-msg">{{topicCodeError}}</div>
+        <div class="entry-block my-5">
+            <form>
+                <mat-form-field class="pr-4">
+                    <input matInput placeholder="Topic Name" name='topicName' [(ngModel)]="topicName" />
+                </mat-form-field>
+                <mat-form-field class="px-4">
+                    <input matInput placeholder="Topic Code (Unique)" name='topicCode' [(ngModel)]="topicCode" />
+                </mat-form-field>
+                <button mat-raised-button (click)="addTopic()"
+                    [disabled]='!(topicCode && topicName)'
+                    color="primary"
+                >
+                    Add Topic
+                </button>
+                <div class="error-msg">{{topicCodeError}}</div>
+            </form>
         </div>
     </div>
-    <!-- <hr />
-    <div class="settings-entry-block"></div>
     <hr />
-    <div class="instruction-entry-block"></div> -->
+    <div class="my-5 settings-entry-block">
+        <form>
+            <mat-form-field class="pr-4">
+                <input matInput name='QuizQuestionsCount' placeholder="Quiz Questions Count" pattern="^[0-9]*$" [(ngModel)]="settings.QuizQuestionsCount" />
+            </mat-form-field>
+            <mat-slide-toggle [checked]="settings.IsRandom" class="px-4" (change)="randomToggle($event)" color="primary">
+                To be Random
+            </mat-slide-toggle>
+            <button mat-raised-button (click)="updateSetting()"
+                    [disabled]='!settings.QuizQuestionsCount'
+                    color="primary"
+                >
+                    Update Settings
+            </button>
+            <div class="error-msg">{{settingsUpdateError}}</div>
+        </form>
+    </div>
+    <hr />
+    <div class="my-5 instruction-entry-block">
+        <form class="example-form">          
+            <mat-form-field class="w-50 pr-4">
+              <textarea matInput name="CMS" rows="4" placeholder="Quiz Instructions (HTML)"
+                [(ngModel)]="instructions.CMS"
+              ></textarea>
+            </mat-form-field>
+            <button mat-raised-button (click)="updateInstructions()"
+                    [disabled]='!instructions.CMS'
+                    color="primary"
+                >
+                    Update Instruction
+            </button>
+            <div class="error-msg">{{insUpdateError}}</div>
+        </form>
+    </div>
 </div>

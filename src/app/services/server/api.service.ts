@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  Question, QuizEntry, Topic } from '../../models';
+import {  Question, QuizEntry, Topic, Setting, Instruction } from '../../models';
 import { HttpClient } from '@angular/common/http';
 
 const API_URL = 'http://localhost:3000/';
@@ -107,8 +107,18 @@ export class ApiService {
     return this.http.get(`${API_URL}settings`).toPromise();
   }
 
+  // updating the settings
+  updateSettings(settings: Setting) {
+    return this.http.put(`${API_URL}settings/add-or-update/${settings.Id}`, settings).toPromise();
+  }
+
   // get the list of questions by topic
   getQuizInstructions() {
     return this.http.get(`${API_URL}instructions/quiz-instructions`).toPromise();
+  }
+
+  // updating the instruction content
+  updateInstruction(instructions: Instruction) {
+    return this.http.put(`${API_URL}instructions/add-or-update/${instructions.Id}`, instructions).toPromise();
   }
 }

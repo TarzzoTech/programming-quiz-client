@@ -17,6 +17,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 // Internal module
 import { AppRoutingModule } from './app-routing.module';
@@ -91,7 +92,8 @@ import { AuthGuardService, DataService, AuthService, QuizService, ApiService, Se
     MatAutocompleteModule,
     MatListModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSlideToggleModule
   ],
   providers: [
     AuthService,

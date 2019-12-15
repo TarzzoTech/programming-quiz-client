@@ -15,6 +15,6 @@ export class EndComponent implements OnInit {
 
   ngOnInit() {
     this.selectedTopic = this.quiz.getTopicName();
-   }
+  }
 
 }

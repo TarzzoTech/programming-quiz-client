@@ -14,7 +14,7 @@ export interface QuizEntry {
 
 export interface QuizQuestionEntry {
     Id: string;
-    SelectedAnswer: string;
+    SelectedAnswers: string;
 }
 
 export const DEFAULT_SCORE = 1;

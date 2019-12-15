@@ -18,7 +18,7 @@ export const questionsEntry = (questions: Question[] = []): QuizQuestionEntry[] 
   questions.forEach(question => {
     const entry: QuizQuestionEntry = {} as QuizQuestionEntry;
     entry.Id = question.Id;
-    entry.SelectedAnswer = question.SelectedAnswers;
+    entry.SelectedAnswers = question.SelectedAnswers;
     quizQuestionEntry.push(entry);
   });
   return quizQuestionEntry;

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {  Question, QuizEntry, Topic, Setting, Instruction, QuestionsEntry } from '../../models';
 import { HttpClient } from '@angular/common/http';
 
-const API_URL = 'http://localhost:3000/';
-// const API_URL = 'https://p-q.herokuapp.com/';
+// const API_URL = 'http://localhost:3000/';
+const API_URL = 'https://p-q.herokuapp.com/';
 
 @Injectable({
   providedIn: 'root'
